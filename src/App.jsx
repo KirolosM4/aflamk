@@ -5,7 +5,8 @@ import { Button } from "@material-tailwind/react";
 const App = () => {
 
   return (
-    <div className="bg-red-500">
+    <div className="bg-blue-500">
+      <div>hi</div>
       <Button>App</Button>
     </div>
   )
