@@ -63,7 +63,7 @@ const HeaderNav = () => {
         };
     }, [])};
     return (
-        <Navbar className="max-w-screen-3xl bg-[#212529] rounded-none  px-11 py-3">
+        <Navbar className="max-w-screen-3xl bg-[#212529] rounded-none border-none  px-11 py-3">
             <div className="flex items-center justify-between gap-8">
                 <Typography
                 as="a"

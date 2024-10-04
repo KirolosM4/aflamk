@@ -5,4 +5,13 @@
 .active{
     color:white;
 }
+.styleHeaderCyn{
+    @apply text-cyan-500 text-5xl;
+}
+.styleHeaderWhite{
+    @apply text-white text-2xl font-bold pb-3;
+}
 
+.styleButtonHover {
+    @apply hover:bg-white hover:text-black hover:opacity-100;
+}

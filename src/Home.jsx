@@ -1,37 +1,36 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { Input,Button } from "@material-tailwind/react";
+import {Button } from "@material-tailwind/react";
 import HeaderNav from "./component/HeaderNav";
 
 const Home = () => {
     return(
-        <div className="h-screen">
+        <div className="h-screen bg-black">
            <HeaderNav/>
+           <div className="w-screen">
+                <div className="w-full text-center p-5">
+                    <p className="styleHeaderCyn">Home</p>
+                </div>
+                <div className="flex justify-between mx-8 px-8">
+                    <div className="text-center">
+                        <p className="styleHeaderWhite">SORT BY</p>
+                        <div className="flex gap-11">
+                            <Button variant="outlined" color="white" className="styleButtonHover hover:opacity-100">Title</Button>
+                            <Button variant="outlined" color="white" className="styleButtonHover hover:opacity-100">Poplarity</Button>
+                            <Button variant="outlined" color="white" className="styleButtonHover hover:opacity-100">Date</Button>
+                            <Button variant="outlined" color="white" className="styleButtonHover hover:opacity-100">Ratin</Button>
+                        </div>
+                    </div>
+                    <div className="text-center">
+                        <p className="styleHeaderWhite">SORT ORDER</p>
+                        <div className="flex gap-11">
+                            <Button variant="outlined" color="white" className="styleButtonHover hover:opacity-100">Descidngin</Button>
+                            <Button variant="outlined" color="white" className="styleButtonHover hover:opacity-100">Ascending</Button>
+                        </div>
+                    </div>
+                </div>
+           </div>
         </div>
     )
 }
 
 export default Home;
-
-
-//  {/* header  */}
-//  <div>
-//  {/* headerNav */}
-//  <div className="flex justify-between items-center px-10 py-2 bg-[#212529] text-white">
-//      <div className="flex gap-7">
-//          <NavLink>Redux Movies</NavLink>
-//          <NavLink>Home</NavLink>
-//          <NavLink>Movies</NavLink>
-//          <NavLink>Series</NavLink>
-//          <NavLink>Contact Us</NavLink>
-//      </div>
-//      <div className="flex items-center gap-5">
-//          <Input label="search"  className="bg-white"/>
-//          <Button variant="outlined" color="green" className="hover:bg-green-500 hover:text-white">Search</Button>
-//          <Button variant="outlined" color="red" className="hover:bg-red-500 hover:text-white w-full">Search Series</Button>
-//          <Button variant="outlined" color="blue" className="hover:bg-blue-500 hover:text-white">Login</Button>
-//          </div>
-//      </div>
-//  {/* headerBody */}
-//  <div></div>
-// </div>
