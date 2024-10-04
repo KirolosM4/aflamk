@@ -1,14 +1,12 @@
 import React from "react";
-import { Button } from "@material-tailwind/react";
-
-
+import {Routes,Route} from "react-router-dom"
+import Home from "./Home";
 const App = () => {
 
   return (
-    <div className="bg-blue-500">
-      <div>hi</div>
-      <Button>App</Button>
-    </div>
+    <Routes>
+      <Route path="/*" element={<Home/>}/>
+    </Routes>
   )
 }
 

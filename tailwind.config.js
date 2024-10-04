@@ -9,7 +9,12 @@ module.exports = withMT({
     "./node_modules/@material-tailwind/react/theme/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens:{
+        "xl":"1094px",
+        "2xl":"1100px"
+      }
+    },
   },
   plugins: [],
 });
