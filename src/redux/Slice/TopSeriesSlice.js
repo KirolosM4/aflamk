@@ -1,11 +1,11 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
-export const getTopMovies = createAsyncThunk("getTopMovies",async(x,ThunkAPI)=>{
+export const getTopSeries = createAsyncThunk("getTopSeries",async(x,ThunkAPI)=>{
     const {rejectWithValue} = ThunkAPI;
     try {
         const options = {
             method: 'GET',
-            url: 'https://api.themoviedb.org/3/movie/top_rated',
+            url: 'https://api.themoviedb.org/3/tv/top_rated',
             params: {language: 'en-US', page: '1'},
             headers: {
               accept: 'application/json',
@@ -16,7 +16,7 @@ export const getTopMovies = createAsyncThunk("getTopMovies",async(x,ThunkAPI)=>{
           const res = axios
             .request(options)
             .then(function (response) {
-              return response.data;
+              return response.data
             })
             return res;
     } catch(error){
@@ -25,25 +25,26 @@ export const getTopMovies = createAsyncThunk("getTopMovies",async(x,ThunkAPI)=>{
 })
 
 const initialState = {
-    topMovies : []
+    topSeries : []
 }
 
-const TopMoviesSlice = createSlice({
-    name:"TopMoviesSlice",
+const TopSeriesSlice = createSlice({
+    name:"TopSeriesSlice",
     initialState,
     extraReducers:(builder)=>{
-        builder.addCase(getTopMovies.pending,()=>{
+        builder.addCase(getTopSeries.pending,()=>{
             console.log("pending")
         });
-        builder.addCase(getTopMovies.fulfilled,(state,{type,payload:{results}})=>{
-            if(type.includes("TopMovies")){
+        builder.addCase(getTopSeries.fulfilled,(state,{type,payload:{results}})=>{
+            if(type.includes("TopSeries")){
                 results.length = 12;
-                state.topMovies = results;            }
+                state.topSeries = results;
+            }
         })
-        builder.addCase(getTopMovies.rejected,(state,{payload})=>{
+        builder.addCase(getTopSeries.rejected,(state,{payload})=>{
             console.log("rej")
         })
     }
 })
 
-export const myTopMovies = TopMoviesSlice.reducer;
+export const myTopSeries = TopSeriesSlice.reducer;

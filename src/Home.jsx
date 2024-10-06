@@ -4,9 +4,11 @@ import HeaderNav from "./component/HeaderNav";
 import MoviesCarousal from "./component/componentHome/MoviesCarousal";
 import SeriesCarousal from "./component/componentHome/SeriesCarousal";
 import TopMovies from "./component/componentHome/TopMovies";
+import TopSeries from "./component/componentHome/TopSeries";
+import Footer from "./component/Footer";
 const Home = () => {
     return(
-            <div className="h-content w-screen h-content bg-black ">
+            <div className="h-content w-screen h-full bg-black ">
                 <HeaderNav/>
                 <div className="w-screen mb-14">
                         <div className="w-full text-center p-5">
@@ -34,6 +36,8 @@ const Home = () => {
                 <MoviesCarousal/>
                 <SeriesCarousal/>
                 <TopMovies/>
+                <TopSeries/>
+                <Footer/>
             </div>
     )
 }

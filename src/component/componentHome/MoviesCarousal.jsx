@@ -13,7 +13,7 @@ const MoviesCarousal = () => {
         dispatch(getMovies())
     },[])
     return(
-        <div className='mx-14 px-5'>
+        <div className='lg:mx-14 px-5'>
             <div className='text-center lg:text-left p-5'>
                 <p className='styleHeaderCyn'>Movies</p>
             </div>

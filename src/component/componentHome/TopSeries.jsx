@@ -3,7 +3,6 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTopMovies } from '../../redux/Slice/TopMoviesSlice';
 import {
     Card,
     CardHeader,
@@ -13,19 +12,20 @@ import {
     Rating,
     Button
   } from "@material-tailwind/react";
-const TopMovies = () => {
-    const {topMovies} = useSelector(state => state.myTopMovies);
+import { getTopSeries } from '../../redux/Slice/TopSeriesSlice';
+const TopSeries = () => {
+    const {topSeries} = useSelector(state => state.myTopSeries);
     const dispatch = useDispatch();
     useEffect(()=>{
-        dispatch(getTopMovies())
+        dispatch(getTopSeries())
     },[])
     return(
         <div className='lg:mx-14 px-5'>
             <div className='text-center lg:text-left p-5'>
-                <p className='styleHeaderCyn'>Top Movies</p>
+                <p className='styleHeaderCyn'>Top Series</p>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center items-center my-7 p-7 w-full gap-11'>
-                {topMovies.map(({poster_path,title,vote_average}, index) => (
+                {topSeries.map(({poster_path,name,vote_average}, index) => (
                     <Card className="w-full h-[32em] overflow-hidden  bg-[#212529]" key={index}>
                         <CardHeader
                           floated={false}
@@ -40,8 +40,8 @@ const TopMovies = () => {
                           />
                         </CardHeader>
                         <CardBody className='h-[35%] pt-5 py-5 flex flex-col pb-0 justify-center'>
-                          <Typography variant="p" className='text-white text- lg:text-2xl'>
-                            TITLE : {title}
+                          <Typography variant="p" className='text-white text-xl lg:text-2xl'>
+                            TITLE : {name}
                           </Typography>
                           <Typography variant="lead" color="gray" className="mt-3 font-normal flex flex-col justify-between lg:flex-row  items-center ">
                             <p className='text-cyan-400'>Rate : {vote_average}</p>
@@ -60,4 +60,4 @@ const TopMovies = () => {
 }
 
 
-export default TopMovies; 
+export default TopSeries; 
