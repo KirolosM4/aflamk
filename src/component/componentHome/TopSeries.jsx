@@ -12,6 +12,7 @@ import {
     Rating,
     Button
   } from "@material-tailwind/react";
+import { Link } from 'react-router-dom';
 import { getTopSeries } from '../../redux/Slice/TopSeriesSlice';
 const TopSeries = () => {
     const {topSeries} = useSelector(state => state.myTopSeries);
@@ -24,7 +25,7 @@ const TopSeries = () => {
             <div className='text-center lg:text-left p-5'>
                 <p className='styleHeaderCyn'>Top Series</p>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center items-center my-7 p-7 w-full gap-11'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center items-center mt-7 p-7 w-full gap-11'>
                 {topSeries.map(({poster_path,name,vote_average}, index) => (
                     <Card className="w-full h-[32em] overflow-hidden  bg-[#212529]" key={index}>
                         <CardHeader
@@ -49,7 +50,9 @@ const TopSeries = () => {
                           </Typography>
                         </CardBody>
                         <CardFooter className="flex justify-center mb-5  items-center h-[10%] w-full">
-                          <Button variant='outlined' color='cyan'>DETAILS</Button>
+                          <Button variant='outlined' color='cyan'>
+                            <Link to="">DETAILS</Link>
+                          </Button>
                         </CardFooter>
                     </Card>
                 ))}

@@ -13,6 +13,7 @@ import {
     Rating,
     Button
   } from "@material-tailwind/react";
+import { Link } from 'react-router-dom';
 const TopMovies = () => {
     const {topMovies} = useSelector(state => state.myTopMovies);
     const dispatch = useDispatch();
@@ -49,7 +50,9 @@ const TopMovies = () => {
                           </Typography>
                         </CardBody>
                         <CardFooter className="flex justify-center mb-5  items-center h-[10%] w-full">
-                          <Button variant='outlined' color='cyan'>DETAILS</Button>
+                          <Button variant='outlined' color='cyan'>
+                            <Link to="">DETAILS</Link>
+                          </Button>
                         </CardFooter>
                     </Card>
                 ))}
