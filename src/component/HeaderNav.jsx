@@ -97,6 +97,12 @@ const HeaderNav = () => {
             </div>
             <Collapse open={openNav}>
                 <NavList />
+                <div className="flex flex-wrap gap-2">
+                        <Input label="search"  className="bg-white"/>
+                        <Button variant="outlined" color="green" className="hover:bg-green-500 hover:text-white w-full">Search</Button>
+                        <Button variant="outlined" color="red" className="hover:bg-red-500 hover:text-white w-full">Search Series</Button>
+                        <Button variant="outlined" color="blue" className="hover:bg-blue-500 hover:text-white w-full">Login</Button>
+                </div>
             </Collapse>
         </Navbar>
     );
