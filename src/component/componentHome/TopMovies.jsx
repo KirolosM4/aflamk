@@ -1,7 +1,4 @@
 import React, {useEffect, useState } from 'react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTopMovies } from '../../redux/Slice/TopMoviesSlice';
 import {
