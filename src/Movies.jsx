@@ -48,7 +48,7 @@ const Movies = () => {
                             />
                             </CardHeader>
                             <CardBody className='h-[35%] pt-5 py-5 flex flex-col pb-0 justify-center'>
-                            <Typography variant="p" className='text-white lg:text-2xl'>
+                            <Typography variant="p" className='text-white text-center md:text-left lg:text-2xl'>
                                 TITLE : {title}
                             </Typography>
                             <Typography variant="lead" color="gray" className="mt-3 font-normal flex flex-col justify-between lg:flex-row  items-center ">
