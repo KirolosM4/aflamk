@@ -1,4 +1,4 @@
-import React, { act, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux"
 import {
     Card,
@@ -11,29 +11,29 @@ import {
     IconButton
   } from "@material-tailwind/react";
   import { Link } from 'react-router-dom';
-import WaitingMovies from "./WaitingMovies";
+import WaitingSeries from "./WatitingSeries"
 import { MdKeyboardArrowLeft,MdKeyboardDoubleArrowLeft,MdKeyboardArrowRight,MdKeyboardDoubleArrowRight  } from "react-icons/md";
-import { getAllMovies, next, prev, resetNext, resetPrev } from "./redux/Slice/allMoviesSlice";
+import { getAllSeries,next, prev, resetNext, resetPrev } from "./redux/Slice/AllSeriesSlice";
 
-const Movies = () => {
-        const {allMovies} = useSelector(state => state.myAllMovies);
-        const {waitingMovie} = useSelector(state=>state.myAllMovies);
-        const {active} = useSelector(state => state.myAllMovies)
+const AllSeries = () => {
+        const {allSeries} = useSelector(state => state.myAllSeries);
+        const {waitingSeries} = useSelector(state=>state.myAllSeries);
+        const {active} = useSelector(state => state.myAllSeries)
         const dispatch = useDispatch();
         useEffect(()=>{
-            dispatch(getAllMovies(active))
+            dispatch(getAllSeries(active))
         },[active])
     return(
         <div className="bg-black">
             <div className="text-center p-11">
-                <p className="styleHeaderWhite">MOVIES</p>
+                <p className="styleHeaderWhite">Series</p>
                 <p className="styleHeaderWhite">PAGE NUMBER <span className='styleHeaderCyn'>{active}</span> FROM <span className='styleHeaderCyn'>500</span> </p>
             </div>
             
             <div className="md:px-14 flex flex-col items-center justify-center w-screen">
-                { waitingMovie ? <WaitingMovies/> :
+                { waitingSeries ? <WaitingSeries/> :
                 <div className='container grid grid-cols-1 px-8 w-[80%] md:w-full md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center items-center my-7 p-7 w-full gap-11'>
-                    {allMovies.map(({poster_path,title,vote_average}, index) => (
+                    {allSeries.map(({poster_path,title,vote_average}, index) => (
                         <Card className="w-full h-[32em] overflow-hidden  bg-[#212529]" key={index}>
                             <CardHeader
                             floated={false}
@@ -107,4 +107,4 @@ const Movies = () => {
     )
 }
 
-export default Movies
+export default AllSeries;
