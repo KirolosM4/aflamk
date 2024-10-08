@@ -1,6 +1,5 @@
 import React, { act, useEffect, useState } from "react";
-import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
-import axios from "axios";
+import {useDispatch, useSelector} from "react-redux"
 import {
     Card,
     CardHeader,
@@ -13,43 +12,16 @@ import {
   } from "@material-tailwind/react";
   import { Link } from 'react-router-dom';
 import WaitingMovies from "./WaitingMovies";
+import { MdKeyboardArrowLeft,MdKeyboardDoubleArrowLeft,MdKeyboardArrowRight,MdKeyboardDoubleArrowRight  } from "react-icons/md";
+import { getAllMovies, next, prev, resetNext, resetPrev } from "./redux/Slice/allMoviesSlice";
+
 const Movies = () => {
-        const [waitingMovie,setWaitingMovie] = useState(false);
-        const [active, setActive] = useState(1);
-        const next = () => {
-            if (active === 500)
-              return;
-               setActive(active + 1);
-          };
-          const prev = () => {
-            if (active === 1) 
-              return;
-              setActive(active - 1);
-          };
-        const [allMovies,setAllMovies] = useState([])
-        const getAllMovies = () => {
-            const options = {
-                method: 'GET',
-                url: 'https://api.themoviedb.org/3/movie/popular',
-                params: {language: 'en-US', page: active},
-                headers: {
-                  accept: 'application/json',
-                  Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MTViOWNkYTliYWQwOTg1MGNjNTk4ZjMzYzIxMmYyNyIsIm5iZiI6MTcyODIwNTIyNC44NjE3NjYsInN1YiI6IjY2ZmZmNjE1MTU5MmVmMWJhOTg1MWM4NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.z4X5_ABx-m_YfD2ED8Sf7juxXY-Caucjxzaoa7TRjCw'
-                }
-              };
-              
-              axios
-                .request(options)
-                .then(function (response) {
-                  setAllMovies(response.data.results);
-                  setWaitingMovie(false)
-                })
-                .catch(function (error) {
-                  console.error(error);
-                });
-        }
+        const {allMovies} = useSelector(state => state.myAllMovies);
+        const {waitingMovie} = useSelector(state=>state.myAllMovies);
+        const {active} = useSelector(state => state.myAllMovies)
+        const dispatch = useDispatch();
         useEffect(()=>{
-            getAllMovies()
+            dispatch(getAllMovies(active))
         },[active])
     return(
         <div className="bg-black">
@@ -58,9 +30,9 @@ const Movies = () => {
                 <p className="styleHeaderWhite">PAGE NUMBER <span className='styleHeaderCyn'>{active}</span> FROM <span className='styleHeaderCyn'>500</span> </p>
             </div>
             
-            <div className="flex flex-col items-center justify-center w-screen">
-                {waitingMovie ? <WaitingMovies/> :
-                <div className='container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center items-center my-7 p-7 w-full gap-11'>
+            <div className="md:px-14 flex flex-col items-center justify-center w-screen">
+                { waitingMovie ? <WaitingMovies/> :
+                <div className='container grid grid-cols-1 px-8 w-[80%] md:w-full md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center items-center my-7 p-7 w-full gap-11'>
                     {allMovies.map(({poster_path,title,vote_average}, index) => (
                         <Card className="w-full h-[32em] overflow-hidden  bg-[#212529]" key={index}>
                             <CardHeader
@@ -80,7 +52,7 @@ const Movies = () => {
                                 TITLE : {title}
                             </Typography>
                             <Typography variant="lead" color="gray" className="mt-3 font-normal flex flex-col justify-between lg:flex-row  items-center ">
-                                <p className='text-cyan-400'>Rate : {vote_average}</p>
+                                <p className='text-cyan-400 text-xl md:text-xl'>Rate : {vote_average}</p>
                                 <Rating value={Math.round(vote_average * 0.5)} />
                             </Typography>
                             </CardBody>
@@ -93,29 +65,41 @@ const Movies = () => {
                     ))}
                 </div>
 }
-                <div className="flex justify-center items-center gap-8 text-white">
+                <div className="flex text-blue-500 rounded bg-white">
                     <IconButton
                         size="sm"
-                        variant="outlined"
-                        onClick={prev}
+                        onClick={()=>dispatch(resetNext())}
                         disabled={active === 1}
-                        className="text-white"
+                        className="text-blue-700 text-xl rounded-none"
                     >
-                        <ArrowLeftIcon strokeWidth={2} className="h-4 w-4 text-white" />
+                        <MdKeyboardDoubleArrowLeft />
                     </IconButton>
-                    <Typography color="gray" className="font-normal text-white">
-                        <span>Page </span> 
-                        <strong className="text-white-900">{active}</strong> of{" "}
-                        <strong className="text-white">500</strong>
+                    <IconButton
+                        size="sm"
+                        onClick={()=>dispatch(prev())}
+                        disabled={active === 1}
+                        className="text-blue-700 text-xl rounded-none"
+                    >
+                        <MdKeyboardArrowLeft />
+                    </IconButton>
+                    <Typography as={"div"} className="flex items-center px-4 bg-gray-900">
+                        <p>{active}</p>
                     </Typography>
                     <IconButton
                         size="sm"
-                        variant="outlined"
-                        onClick={()=>{next();setWaitingMovie(true)}}
+                        onClick={()=>dispatch(next())}
                         disabled={active === 500}
-                        className="text-white"
+                        className="text-blue-700 text-xl rounded-none"
                     >
-                        <ArrowRightIcon strokeWidth={2} className="h-4 w-4" />
+                        <MdKeyboardArrowRight />
+                    </IconButton>
+                    <IconButton
+                        size="sm"
+                        onClick={()=>dispatch(resetPrev())}
+                        disabled={active === 500}
+                        className="text-blue-700 text-xl rounded-none"
+                    >
+                        <MdKeyboardDoubleArrowRight />
                     </IconButton>
                 </div>
             </div>

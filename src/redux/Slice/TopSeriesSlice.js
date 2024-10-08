@@ -13,7 +13,7 @@ export const getTopSeries = createAsyncThunk("getTopSeries",async(x,ThunkAPI)=>{
             }
           };
           
-          const res = axios
+          const res = await axios
             .request(options)
             .then(function (response) {
               return response.data
