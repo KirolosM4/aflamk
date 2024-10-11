@@ -26,13 +26,13 @@ const ContactUs = () => {
         },
       );
   };
-  const time = () => {
+  const typing = () => {
+    setChange(true);
     setTimeout(()=>{
         setChange(false)
     },5000)
-    console.log("done")
-
   }
+
 
   return (
     <div className='flex flex-col items-center p-5 items-center h-[80vh]  bg-[#212529] justify-center'>
@@ -42,15 +42,14 @@ const ContactUs = () => {
         <Card color="transparent" shadow={false} className='shadow-2xl shadow-black px-5 flex flex-col items-center'>
             <form  ref={form} onSubmit={sendEmail} className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
                 <div className="mb-1 flex flex-col gap-6">
-                    <div>
+                    <div> 
                         <p className='p-2 text-white'>
                             {change ? <p className='text-cyan-500'>Typing....</p> : <p>Email address</p>}
                         </p>
                         <Input
-                            className='text-cyan-500 border-none outline-2 outline-cyan-500 focus:outline-2 focus:shadow-md focus:shadow-cyan-500'
+                            className='w-[80%] text-cyan-500 border-none outline-2 outline-cyan-500 focus:outline-2 focus:shadow-md focus:shadow-cyan-500 '
                             name='email'
-                            onChange={()=>setChange(true)}
-                            onKeyUp={()=>time()}
+                            onChange={()=>typing(true)}
                         />
                     </div>
                     <div>
