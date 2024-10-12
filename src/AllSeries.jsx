@@ -24,7 +24,7 @@ const AllSeries = () => {
             dispatch(getAllSeries(active))
         },[active])
     return(
-        <div className="bg-black">
+        <div>
             <div className="text-center p-11">
                 <p className="styleHeaderWhite">Series</p>
                 <p className="styleHeaderWhite">PAGE NUMBER <span className='styleHeaderCyn'>{active}</span> FROM <span className='styleHeaderCyn'>500</span> </p>

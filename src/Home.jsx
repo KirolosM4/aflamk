@@ -8,7 +8,7 @@ import TopSeries from "./component/componentHome/TopSeries";
 import Footer from "./component/Footer";
 const Home = () => {
     return(
-            <div className="h-content w-screen h-full bg-black ">
+            <div className="h-content w-screen h-full">
                 <div className="w-screen mb-14">
                         <div className="w-full text-center p-5">
                             <p className="styleHeaderCyn">Home</p>

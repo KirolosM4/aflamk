@@ -61,7 +61,7 @@ const ContactUs = () => {
     },2000)
   }
   return (
-    <div className='flex flex-col items-center p-5 items-center h-[80vh]  bg-[#212529] justify-center'>
+    <div className='flex flex-col items-center p-5 pb-11 items-center h-[80vh]  bg-[#212529] justify-center'>
         <Typography variant="h4" className='text-cyan-500 py-4'>
             Contact with the Website developer!
         </Typography>
