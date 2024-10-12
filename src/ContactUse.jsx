@@ -61,11 +61,11 @@ const ContactUs = () => {
     },2000)
   }
   return (
-    <div className='flex flex-col items-center p-5 pb-11 items-center h-[80vh]  bg-[#212529] justify-center'>
-        <Typography variant="h4" className='text-cyan-500 py-4'>
+    <div className='flex flex-col items-center p-5 my-16 items-center h-[80vh]  bg-[#212529] justify-center'>
+        <Typography variant="h4" className='text-cyan-500 py-5'>
             Contact with the Website developer!
         </Typography>
-        <Card color="transparent" shadow={false} className='miniScreen:w-[80%] Screen:w-fit Screen:bg-[#212529] w-fit shadow-2xl shadow-black px-5 flex flex-col items-center'>
+        <Card color="transparent" shadow={false} className='miniScreen:w-[80%] Screen:w-fit Screen:bg-[#212529] w-fit shadow-2xl shadow-black px-5 flex flex-col items-center '>
             <form  ref={form} onSubmit={sendEmail} className="mt-8 mb-2 miniScreen:w-full Screen:w-80 Screen:max-w-screen-lg sm:w-96">
                 <div className="w-full mb-1 flex flex-col gap-6">
                     <div> 
@@ -73,7 +73,7 @@ const ContactUs = () => {
                             {changeEmail ? <p className='text-cyan-500'>Typing....</p> : <p>Email address</p>}
                         </p>
                         <Input
-                            className='w-full text-cyan-500 border-none outline-2 outline-cyan-500 focus:outline-2 focus:shadow-md focus:shadow-cyan-500 '
+                            className='w-full text-cyan-500 border-none outline-2 outline-cyan-500 focus:outline-2 focus:shadow-md focus:shadow-cyan-500'
                             name='email'
                             onChange={()=>typingEmail()}
                         />

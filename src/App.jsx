@@ -9,7 +9,7 @@ import ContactUs from "./ContactUse";
 const App = () => {
 
   return (
-    <div className="bg-black">
+    <div>
       <HeaderNav/>
       <Routes>
         <Route path="/*" element={<Home/>}/>
