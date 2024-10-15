@@ -24,7 +24,7 @@ const AllMovies = () => {
             dispatch(getAllMovies(active))
         },[active])
     return(
-        <div className="bg-black">
+        <div>
             <div className="text-center p-11">
                 <p className="styleHeaderWhite">MOVIES</p>
                 <p className="styleHeaderWhite">PAGE NUMBER <span className='styleHeaderCyn'>{active}</span> FROM <span className='styleHeaderCyn'>500</span> </p>

@@ -15,8 +15,13 @@ import SearchMovies from "./component/componentsSearch/SearchMovies";
 
 const App = () => {
   return (
+
     <div>
       <HeaderNav />
+
+    <div className="bg-black">
+   
+
       <Routes>
         <Route path="/*" element={<Home />} />
         <Route path="/Movies" element={<AllMovies />} />
