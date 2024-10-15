@@ -11,29 +11,25 @@ import SeriesDetails from "./component/componentsDetails/SeriesDetails";
 import SearchSeries from "./component/componentsSearch/SearchSeries";
 import SearchMovies from "./component/componentsSearch/SearchMovies";
 
-
-
 const App = () => {
   return (
-
     <div>
       <HeaderNav />
 
-    <div className="bg-black">
-   
+      <div className="bg-black">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Movies" element={<AllMovies />} />
+          <Route path="/Series" element={<AllSeries />} />
+          <Route path="/ContactUs" element={<ContactUs />} />
+          <Route path="/searchseries" element={<SearchSeries />} />
+          <Route path="/searchmovies" element={<SearchMovies />} />
 
-      <Routes>
-        <Route path="/*" element={<Home />} />
-        <Route path="/Movies" element={<AllMovies />} />
-        <Route path="/Series" element={<AllSeries />} />
-        <Route path="/ContactUs" element={<ContactUs />} />
-        <Route path="/searchseries" element={<SearchSeries />} />
-        <Route path="/searchmovies" element={<SearchMovies />} />
-
-        <Route path="/moviesdetails/:movieId" element={<MoviesDetails />} />
-        <Route path="/seriesdetails/:seriesId" element={<SeriesDetails />} />
-      </Routes>
-      <Footer />
+          <Route path="/moviesdetails/:movieId" element={<MoviesDetails />} />
+          <Route path="/seriesdetails/:seriesId" element={<SeriesDetails />} />
+        </Routes>
+        <Footer />
+      </div>
     </div>
   );
 };
