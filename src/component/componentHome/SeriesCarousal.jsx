@@ -5,7 +5,9 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { getSeries } from '../../redux/Slice/SeriesCarousalSlice';
+import { Link } from 'react-router-dom';
 const SeriesCarousal = () => {
     const {series} = useSelector(state => state.mySeries);
     const dispatch = useDispatch();
@@ -26,9 +28,12 @@ const SeriesCarousal = () => {
             virtual
             loop={true}
         >
-            {series.map(({poster_path}, index) => (
-            <SwiperSlide key={index} virtualIndex={index}>
+            {series.map(({poster_path,id}, index) => (
+              <SwiperSlide key={index} virtualIndex={index}>
+    <Link to={`/seriesdetails/${id}`}>
+
                 <img src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${poster_path}`} alt="" />
+          </Link>
             </SwiperSlide>
             ))}
         </Swiper>
