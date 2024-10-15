@@ -27,9 +27,9 @@ const MoviesCarousal = () => {
             virtual
             loop={true}
         >
-            {movies.map(({poster_path}, index) => (
+            {movies.map(({poster_path,id}, index) => (
             <SwiperSlide key={index} virtualIndex={index}>
-                <Link to="/aflamk">
+              <Link to={`/moviesdetails/${id}`}>
                     <img src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${poster_path}`} alt="" />
                 </Link>
             </SwiperSlide>
