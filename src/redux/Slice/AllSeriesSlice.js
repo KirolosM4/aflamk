@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// الحصول على جميع المسلسلات
 export const getAllSeries = createAsyncThunk(
   "getAllSeries",
   async (active, ThunkAPI) => {
@@ -21,34 +20,32 @@ export const getAllSeries = createAsyncThunk(
       const res = await axios.request(options);
       return res.data;
     } catch (error) {
-      return rejectWithValue(error.response.data); // التعامل مع الأخطاء
+      return rejectWithValue(error.response.data);
     }
   }
 );
 
-// الحصول على تفاصيل مسلسل معين
 export const getSeriesDetails = createAsyncThunk(
-    "getSeriesDetails",
-    async (seriesId, ThunkAPI) => {  // تأكد أن المعرف يتم تمريره هنا مباشرة
-      const { rejectWithValue } = ThunkAPI;
-      try {
-        const options = {
-          method: "GET",
-          url: `https://api.themoviedb.org/3/tv/${seriesId}?language=en-US`, // استخدام seriesId مباشرة هنا
-          headers: {
-            accept: "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MTViOWNkYTliYWQwOTg1MGNjNTk4ZjMzYzIxMmYyNyIsIm5iZiI6MTcyODIwNTIyNC44NjE3NjYsInN1YiI6IjY2ZmZmNjE1MTU5MmVmMWJhOTg1MWM4NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.z4X5_ABx-m_YfD2ED8Sf7juxXY-Caucjxzaoa7TRjCw"
-          },
-        };
-        const res = await axios.request(options);
-        return res.data;
-      } catch (error) {
-        return rejectWithValue(error.response?.data);
-      }
+  "getSeriesDetails",
+  async (seriesId, ThunkAPI) => {
+    const { rejectWithValue } = ThunkAPI;
+    try {
+      const options = {
+        method: "GET",
+        url: `https://api.themoviedb.org/3/tv/${seriesId}?language=en-US`,
+        headers: {
+          accept: "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MTViOWNkYTliYWQwOTg1MGNjNTk4ZjMzYzIxMmYyNyIsIm5iZiI6MTcyODIwNTIyNC44NjE3NjYsInN1YiI6IjY2ZmZmNjE1MTU5MmVmMWJhOTg1MWM4NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.z4X5_ABx-m_YfD2ED8Sf7juxXY-Caucjxzaoa7TRjCw",
+        },
+      };
+      const res = await axios.request(options);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data);
     }
-  );
-  
+  }
+);
 
 const initialState = {
   allSeries: [],
@@ -64,7 +61,6 @@ const AllSeriesSlice = createSlice({
   name: "AllSeriesSlice",
   initialState,
   extraReducers: (builder) => {
-    // للحصول على جميع المسلسلات
     builder.addCase(getAllSeries.pending, (state) => {
       state.waitingSeries = true;
     });
@@ -77,7 +73,6 @@ const AllSeriesSlice = createSlice({
       state.waitingSeries = false;
     });
 
-    // للحصول على تفاصيل المسلسل
     builder.addCase(getSeriesDetails.pending, (state) => {
       state.loading = true;
     });
