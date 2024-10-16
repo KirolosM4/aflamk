@@ -33,7 +33,7 @@ const AllMovies = () => {
             <div className="md:px-14 flex flex-col items-center justify-center w-screen">
                 { waitingMovie ? <WaitingMovies className="h-screen"/> :
                 <div className='container grid grid-cols-1 px-8 w-[80%] md:w-full md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center items-center my-7 p-7 w-full gap-11'>
-                    {allMovies.map(({poster_path,title,vote_average}, index) => (
+                    {allMovies.map(({poster_path,title,vote_average,id}, index) => (
                         <Card className="w-full h-[32em] overflow-hidden  bg-[#212529]" key={index}>
                             <CardHeader
                             floated={false}
@@ -57,9 +57,9 @@ const AllMovies = () => {
                             </Typography>
                             </CardBody>
                             <CardFooter className="flex justify-center mb-5  items-center h-[10%] w-full">
-                            <Button variant='outlined' color='cyan'>
-                                <Link to="">DETAILS</Link>
-                            </Button>
+                            <Link to={`/moviesdetails/${id}`}>  <Button variant='outlined' color='cyan'>
+                              DETAILS
+                            </Button></Link>
                             </CardFooter>
                         </Card>
                     ))}
