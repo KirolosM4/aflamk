@@ -1,17 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { Button } from "@material-tailwind/react";
+import React from "react";
+import MainNav from "./component/NavBar";
+import Home from "./Home";
+import {Routes,Route} from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
+const App = () => {
+  return(
     <>
-      <Button>Button</Button>
+      <MainNav/>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+      </Routes>
     </>
   )
 }
 
-export default App
+export default App;
