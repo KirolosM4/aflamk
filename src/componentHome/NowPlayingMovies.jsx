@@ -23,7 +23,6 @@ const NowPlayingMovie = () => {
                 className="w-full h-full mySwiper"
                 loop={true}
                 slidesPerView={withBrowser > 1200 ? 4 : withBrowser > 920 ? 3 : withBrowser > 760 ? 2 : 1}
-                enabled="true"
                 >
                 {
                     loadingNowPlayingMovie
@@ -31,7 +30,7 @@ const NowPlayingMovie = () => {
                     <div className="loader justify-self-center"></div>
                     :
                     nowPlayingMovie.map((movie)=>(
-                         <SwiperSlide className="flex justify-items-center">
+                         <SwiperSlide key={movie.id} className="flex justify-items-center">
                             <img className="w-[60%] h-full object-cover md:w-[70%]" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.backdrop_path}`} alt="" />
                         </SwiperSlide>
                     ))
