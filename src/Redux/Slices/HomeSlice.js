@@ -24,6 +24,15 @@ const initialState = {
     loadingNowPlayingMovie:false,
 }
 
+export const getNowPlayingSeries = createAsyncThunk("/getNowPlayingSeries",async(x,thunkAPI)=>{
+    const {rejectWithValue} = thunkAPI;
+    try {
+        
+    } catch (error) {
+        return rejectWithValue(error);
+    }
+})
+
 const HomeSlice = createSlice({
     name:"/HomeSlice",
     initialState,

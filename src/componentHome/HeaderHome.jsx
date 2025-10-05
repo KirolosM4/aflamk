@@ -9,17 +9,17 @@ const HeaderHome = () => {
                 <div>
                     <p className="text-center py-2 text-2xl font-bold text-white md:text-3xl">SORT BY</p>
                     <div className="flex gap-4">
-                        <Button className="py-3 px-4" variant="outlined" color="white">Title</Button>
-                        <Button className="py-3 px-4" variant="outlined" color="white">Poplarity</Button>
-                        <Button className="py-3 px-4" variant="outlined" color="white">Date</Button>
-                        <Button className="py-3 px-4" variant="outlined" color="white">Ratin</Button>
+                        <Button className="py-3 px-4 hover:bg-white hover:text-black" variant="outlined" color="white">Title</Button>
+                        <Button className="py-3 px-4 hover:bg-white hover:text-black" variant="outlined" color="white">Poplarity</Button>
+                        <Button className="py-3 px-4 hover:bg-white hover:text-black" variant="outlined" color="white">Date</Button>
+                        <Button className="py-3 px-4 hover:bg-white hover:text-black" variant="outlined" color="white">Ratin</Button>
                     </div>
                 </div>
                 <div>
                     <p className="text-center py-2 text-2xl font-bold text-white md:text-3xl">SORT ORDER</p>
                     <div className="flex gap-4">
-                        <Button className="py-3 px-4"  variant="outlined" color="white">Descingin</Button>
-                        <Button className="py-3 px-4"  variant="outlined" color="white">Ascending</Button>
+                        <Button className="py-3 px-4 hover:bg-white hover:text-black"  variant="outlined" color="white">Descingin</Button>
+                        <Button className="py-3 px-4 hover:bg-white hover:text-black"  variant="outlined" color="white">Ascending</Button>
                     </div>
                 </div>
             </div>
