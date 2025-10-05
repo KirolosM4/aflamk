@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getNowPlayingMovie = createAsyncThunk("/getNowPlayingMovie", async (x,thunkAPI)=>{
+export const getNowPlayingMovies = createAsyncThunk("/getNowPlayingMovies", async (x,thunkAPI)=>{
     const {rejectWithValue} = thunkAPI;
     try {
         const {data} = await axios({
@@ -20,14 +20,28 @@ export const getNowPlayingMovie = createAsyncThunk("/getNowPlayingMovie", async 
 })
 
 const initialState = {
-    nowPlayingMovie:[],
-    loadingNowPlayingMovie:false,
+    nowPlayingMovies:[],
+    loadingNowPlayingMovies:false,
+    errNowPlayingMovies:false,
+    nowPlayingSeries:[],
+    loadingNowPlayingSeries:false,
+    errNowPlayingSeries:false,
 }
 
 export const getNowPlayingSeries = createAsyncThunk("/getNowPlayingSeries",async(x,thunkAPI)=>{
     const {rejectWithValue} = thunkAPI;
     try {
-        
+        const {data} = await axios({
+            method:"get",
+            url: 'https://api.themoviedb.org/3/tv/popular',
+            params: {language: 'en-US', page: '1'},
+            headers: {
+                accept: 'application/json',
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MTViOWNkYTliYWQwOTg1MGNjNTk4ZjMzYzIxMmYyNyIsIm5iZiI6MTcyODA1MDcwOS41NDEsInN1YiI6IjY2ZmZmNjE1MTU5MmVmMWJhOTg1MWM4NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BLDzvE3JjpnDnXJp65L2ww7pclm633QVmw5K1JssZEY'
+            }
+        })
+
+        return data;
     } catch (error) {
         return rejectWithValue(error);
     }
@@ -37,16 +51,32 @@ const HomeSlice = createSlice({
     name:"/HomeSlice",
     initialState,
     extraReducers:(builder)=>{
-        builder.addCase(getNowPlayingMovie.pending,(state,{payload})=>{
-            state.loadingNowPlayingMovie = true;
-        })
-        builder.addCase(getNowPlayingMovie.fulfilled,(state,{payload})=>{
-            state.loadingNowPlayingMovie = false;
-            state.nowPlayingMovie = payload.results;
-        })
-        builder.addCase(getNowPlayingMovie.rejected,(state,{payload})=>{
-            console.log("rej")
-        })
+        // builder for getNowPlayingMovies
+        builder.addCase(getNowPlayingMovies.pending,(state,{payload})=>{
+            state.loadingNowPlayingMovies = true;
+        });
+        builder.addCase(getNowPlayingMovies.fulfilled,(state,{payload})=>{
+            state.nowPlayingMovies = payload.results;
+            state.loadingNowPlayingMovies = false;
+            state.errNowPlayingMovies = false;
+        });
+        builder.addCase(getNowPlayingMovies.rejected,(state,{payload})=>{
+            state.errNowPlayingMovies = true;
+            state.loadingNowPlayingMovies = false;
+        });
+        // builder fro getNowPlayingSeries
+        builder.addCase(getNowPlayingSeries.pending,(state,{payload})=>{
+            state.loadingNowPlayingSeries = true;
+        });
+        builder.addCase(getNowPlayingSeries.fulfilled,(state,{payload})=>{
+            state.nowPlayingSeries = payload.results;
+            state.loadingNowPlayingSeries = false;
+            state.errNowPlayingSeries = false;
+        });
+        builder.addCase(getNowPlayingSeries.rejected,(state,{payload})=>{
+            state.errNowPlayingSeries = true;
+            state.loadingNowPlayingSeries = false;
+        });
     }
 })
 
