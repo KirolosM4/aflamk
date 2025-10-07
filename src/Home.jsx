@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import HeaderHome from "./componentHome/HeaderHome";
 import NowPlayingMovies from "./componentHome/NowPlayingMovies";
 import NowPlayingSeries from "./componentHome/NowPlayingSeries";
+import TopMovies from "./componentHome/TopMovies";
 
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
             <HeaderHome/>
             <NowPlayingMovies/>
             <NowPlayingSeries/>
+            <TopMovies/>
         </div>
     )
 }

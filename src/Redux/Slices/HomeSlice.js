@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 
+// function get now playing movies 
 export const getNowPlayingMovies = createAsyncThunk("/getNowPlayingMovies", async (x,thunkAPI)=>{
     const {rejectWithValue} = thunkAPI;
     try {
@@ -19,15 +20,7 @@ export const getNowPlayingMovies = createAsyncThunk("/getNowPlayingMovies", asyn
     }
 })
 
-const initialState = {
-    nowPlayingMovies:[],
-    loadingNowPlayingMovies:false,
-    errNowPlayingMovies:false,
-    nowPlayingSeries:[],
-    loadingNowPlayingSeries:false,
-    errNowPlayingSeries:false,
-}
-
+// function get now playing series 
 export const getNowPlayingSeries = createAsyncThunk("/getNowPlayingSeries",async(x,thunkAPI)=>{
     const {rejectWithValue} = thunkAPI;
     try {
@@ -46,6 +39,37 @@ export const getNowPlayingSeries = createAsyncThunk("/getNowPlayingSeries",async
         return rejectWithValue(error);
     }
 })
+
+export const getTopMovies = createAsyncThunk("getTopMovies",async (x,thunkAPI)=>{
+    const {rejectWithValue} = thunkAPI;
+    try {
+        const {data} = await axios({
+            method:"get",
+                url: 'https://api.themoviedb.org/3/movie/top_rated',
+                params: {language: 'en-US', page: '1'},
+                headers: {
+                    accept: 'application/json',
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MTViOWNkYTliYWQwOTg1MGNjNTk4ZjMzYzIxMmYyNyIsIm5iZiI6MTcyODA1MDcwOS41NDEsInN1YiI6IjY2ZmZmNjE1MTU5MmVmMWJhOTg1MWM4NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BLDzvE3JjpnDnXJp65L2ww7pclm633QVmw5K1JssZEY'
+                }
+        })
+        return data;
+    } catch (error) {
+        return rejectWithValue(error);
+    }
+})
+
+
+const initialState = {
+    nowPlayingMovies:[],
+    loadingNowPlayingMovies:false,
+    errNowPlayingMovies:false,
+    nowPlayingSeries:[],
+    loadingNowPlayingSeries:false,
+    errNowPlayingSeries:false,
+    topMovies:[],
+    loadingTopMovies:false,
+    errorTopMovies:false,
+}
 
 const HomeSlice = createSlice({
     name:"/HomeSlice",
@@ -77,6 +101,19 @@ const HomeSlice = createSlice({
             state.errNowPlayingSeries = true;
             state.loadingNowPlayingSeries = false;
         });
+        // builder for getTopMovies
+        builder.addCase(getTopMovies.pending,(state,{payload})=>{
+            state.loadingTopMovies = true;
+        }) 
+        builder.addCase(getTopMovies.fulfilled,(state,{payload})=>{
+            state.topMovies = payload.results;
+            state.loadingTopMovies = false;
+            state.errorTopMovies = false;
+        }) 
+        builder.addCase(getTopMovies.rejected,(state,{payload})=>{
+            state.loadingTopMovies = false;
+            state.errorTopMovies = true;
+        }) 
     }
 })
 

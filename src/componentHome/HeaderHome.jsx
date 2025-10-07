@@ -8,7 +8,7 @@ const HeaderHome = () => {
             <div className="flex justify-around flex-wrap gap-4">
                 <div>
                     <p className="text-center py-2 text-2xl font-bold text-white md:text-3xl">SORT BY</p>
-                    <div className="flex gap-4">
+                    <div className="flex flex-wrap justify-center gap-4">
                         <Button className="py-3 px-4 hover:bg-white hover:text-black" variant="outlined" color="white">Title</Button>
                         <Button className="py-3 px-4 hover:bg-white hover:text-black" variant="outlined" color="white">Poplarity</Button>
                         <Button className="py-3 px-4 hover:bg-white hover:text-black" variant="outlined" color="white">Date</Button>
@@ -17,7 +17,7 @@ const HeaderHome = () => {
                 </div>
                 <div>
                     <p className="text-center py-2 text-2xl font-bold text-white md:text-3xl">SORT ORDER</p>
-                    <div className="flex gap-4">
+                    <div className="flex flex-wrap justify-center gap-4">
                         <Button className="py-3 px-4 hover:bg-white hover:text-black"  variant="outlined" color="white">Descingin</Button>
                         <Button className="py-3 px-4 hover:bg-white hover:text-black"  variant="outlined" color="white">Ascending</Button>
                     </div>

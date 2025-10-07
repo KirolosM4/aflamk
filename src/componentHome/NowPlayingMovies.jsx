@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getNowPlayingMovies } from "../Redux/Slices/HomeSlice";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -9,10 +9,19 @@ import { Pagination, Navigation } from 'swiper/modules';
 
 const NowPlayingMovies = () => {
     const dispatch = useDispatch();
-    const withBrowser = window.innerWidth;
+    const [countslide,setCountSlide] = useState(1);
     const {nowPlayingMovies,loadingNowPlayingMovies,errNowPlayingMovies} = useSelector(reducer=>reducer.HomeRedu)
+    
+    const updateSlideCount = () =>{
+        window.innerWidth > 1200 ? setCountSlide(4) : window.innerWidth > 920 ? setCountSlide(3) : window.innerWidth > 760 ? setCountSlide(2) : setCountSlide(1);
+        window.addEventListener('resize',updateSlideCount);
+    }
+
     useEffect(()=>{
         dispatch(getNowPlayingMovies())
+    },[])
+    useEffect(()=>{
+        updateSlideCount()
     },[])
     return(
         <div className="container mx-auto flex flex-col">
@@ -31,12 +40,12 @@ const NowPlayingMovies = () => {
                 modules={[Pagination, Navigation]}
                 className="w-full h-full mySwiper"
                 loop={true}
-                slidesPerView={withBrowser > 1200 ? 4 : withBrowser > 920 ? 3 : withBrowser > 760 ? 2 : 1}
+                slidesPerView={countslide}
                     >
                     {
-                        nowPlayingMovies.map((movie)=>(
-                         <SwiperSlide key={movie.id} className="flex justify-items-center">
-                            <img className="w-[60%] h-full object-cover md:w-[75%] md:px-2" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.backdrop_path}`} alt="" />
+                        nowPlayingMovies.map(({id,poster_path})=>(
+                         <SwiperSlide key={id} className="flex justify-items-center">
+                            <img className="w-[60%] h-full object-cover md:w-[75%] md:px-2" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${poster_path}`} alt="" />
                         </SwiperSlide>
                     ))
                     }
