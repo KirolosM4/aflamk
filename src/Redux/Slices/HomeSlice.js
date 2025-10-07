@@ -39,18 +39,36 @@ export const getNowPlayingSeries = createAsyncThunk("/getNowPlayingSeries",async
         return rejectWithValue(error);
     }
 })
-
+// function for getTopMovies
 export const getTopMovies = createAsyncThunk("getTopMovies",async (x,thunkAPI)=>{
     const {rejectWithValue} = thunkAPI;
     try {
         const {data} = await axios({
             method:"get",
-                url: 'https://api.themoviedb.org/3/movie/top_rated',
-                params: {language: 'en-US', page: '1'},
-                headers: {
-                    accept: 'application/json',
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MTViOWNkYTliYWQwOTg1MGNjNTk4ZjMzYzIxMmYyNyIsIm5iZiI6MTcyODA1MDcwOS41NDEsInN1YiI6IjY2ZmZmNjE1MTU5MmVmMWJhOTg1MWM4NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BLDzvE3JjpnDnXJp65L2ww7pclm633QVmw5K1JssZEY'
-                }
+            url: 'https://api.themoviedb.org/3/movie/top_rated',
+            params: {language: 'en-US', page: '1'},
+            headers: {
+                accept: 'application/json',
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MTViOWNkYTliYWQwOTg1MGNjNTk4ZjMzYzIxMmYyNyIsIm5iZiI6MTcyODA1MDcwOS41NDEsInN1YiI6IjY2ZmZmNjE1MTU5MmVmMWJhOTg1MWM4NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BLDzvE3JjpnDnXJp65L2ww7pclm633QVmw5K1JssZEY'
+            }
+        })
+        return data;
+    } catch (error) {
+        return rejectWithValue(error);
+    }
+})
+// function for getTopSeries
+export const getTopSeries = createAsyncThunk("getTopSeries",async (x,thunkAPI)=>{
+    const {rejectWithValue} = thunkAPI;
+    try {
+        const {data} = await axios({
+            method:"get",
+            url: 'https://api.themoviedb.org/3/tv/top_rated',
+            params: {language: 'en-US', page: '1'},
+            headers: {
+                accept: 'application/json',
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MTViOWNkYTliYWQwOTg1MGNjNTk4ZjMzYzIxMmYyNyIsIm5iZiI6MTcyODA1MDcwOS41NDEsInN1YiI6IjY2ZmZmNjE1MTU5MmVmMWJhOTg1MWM4NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BLDzvE3JjpnDnXJp65L2ww7pclm633QVmw5K1JssZEY'
+            }
         })
         return data;
     } catch (error) {
@@ -69,6 +87,9 @@ const initialState = {
     topMovies:[],
     loadingTopMovies:false,
     errorTopMovies:false,
+    topSeries:[],
+    loadingTopSeries:false,
+    errorTopSeries:false,
 }
 
 const HomeSlice = createSlice({
@@ -113,6 +134,19 @@ const HomeSlice = createSlice({
         builder.addCase(getTopMovies.rejected,(state,{payload})=>{
             state.loadingTopMovies = false;
             state.errorTopMovies = true;
+        }) 
+        // builder for getTopSeries
+        builder.addCase(getTopSeries.pending,(state,{payload})=>{
+            state.loadingTopSeries = true;
+        }) 
+        builder.addCase(getTopSeries.fulfilled,(state,{payload})=>{
+            state.topSeries = payload.results;
+            state.loadingTopSeries = false;
+            state.errorTopSeries = false;
+        }) 
+        builder.addCase(getTopSeries.rejected,(state,{payload})=>{
+            state.loadingTopSeries = false;
+            state.errorTopSeries = true;
         }) 
     }
 })

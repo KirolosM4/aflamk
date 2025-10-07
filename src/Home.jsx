@@ -3,6 +3,7 @@ import HeaderHome from "./componentHome/HeaderHome";
 import NowPlayingMovies from "./componentHome/NowPlayingMovies";
 import NowPlayingSeries from "./componentHome/NowPlayingSeries";
 import TopMovies from "./componentHome/TopMovies";
+import TopSeries from "./componentHome/TopSeries";
 
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
             <NowPlayingMovies/>
             <NowPlayingSeries/>
             <TopMovies/>
+            <TopSeries/>
         </div>
     )
 }
