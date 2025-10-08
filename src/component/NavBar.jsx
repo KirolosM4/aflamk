@@ -4,45 +4,71 @@ import {
     Collapse,
     Typography,
     IconButton,
+    Input,
+    Button
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import {NavLink} from "react-router-dom"
 function NavList() {
     return (
-        <ul className="container mx-auto my-2 flex flex-col gap-2 text-gray-500 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-            <Typography
-                as={NavLink}
-                variant="small"
-                className="p-1 font-medium hover:text-gray-300"
-                to="/"
-            >
-                Pages
-            </Typography>
-            <Typography
-                as={NavLink}
-                variant="small"
-                className="p-1 font-medium hover:text-gray-300"
-                to="/movies"
-            >
-                Account
-            </Typography>
-            <Typography
-                as={NavLink}
-                variant="small"
-                className="p-1 font-medium hover:text-gray-300"
-                to="/series"
-            >
-                Blocks
-            </Typography>
-            <Typography
-                as={NavLink}
-                variant="small"
-                className="p-1 font-medium hover:text-gray-300"
-                to="contactus"
-            >
-                Docs
-            </Typography>
-        </ul>
+        <div className="container mx-auto flex flex-col lg:flex-row justify-between">
+            <ul className="my-2 flex flex-col gap-2 text-gray-500 lg:mb-0 lg:mt-0 lg:flex-row lg:gap-3">
+                <Typography
+                    as={NavLink}
+                    variant="small"
+                    className="p-1 font-medium hover:text-gray-300"
+                    to="/"
+                >
+                    Home
+                </Typography>
+                <Typography
+                    as={NavLink}
+                    variant="small"
+                    className="p-1 font-medium hover:text-gray-300"
+                    to="/movies"
+                >
+                    Movies
+                </Typography>
+                <Typography
+                    as={NavLink}
+                    variant="small"
+                    className="p-1 font-medium hover:text-gray-300"
+                    to="/series"
+                >
+                    Series
+                </Typography>
+                <Typography
+                    as={NavLink}
+                    variant="small"
+                    className="p-1 font-medium hover:text-gray-300"
+                    to="contactus"
+                >
+                    ContactUs
+                </Typography>
+            </ul>
+            <ul className="my-2 flex flex-col flex-wrap gap-2 lg:mb-0 lg:mt-0 md:flex-row lg:gap-3">
+                <Typography
+                    as="li"
+                >
+                    <Input label="Username" className="bg-white" />
+                </Typography>
+                <Typography
+                    as="li"
+                >
+                    <Button variant="outlined" color="green" className="hover:bg-green-500 hover:text-white py-3 px-4">Search</Button>
+                </Typography>
+                <Typography
+                    as="li"
+                >
+                    <Button variant="outlined" color="red" className="hover:bg-red-500 hover:text-white py-3 px-4">Search Series</Button>
+                </Typography>
+                <Typography
+                    as="li"
+                >
+                    <Button variant="outlined" color="cyan" className="hover:bg-cyan-500 hover:text-white py-3 px-4">LogIn</Button>
+                </Typography>
+            </ul>
+        </div>
     );
 }
 
@@ -71,7 +97,7 @@ const MainNav =  () => {
                 >
                     AFLAMK
                 </Typography>
-                <div className="hidden lg:block">
+                <div className="hidden lg:block grow">
                     <NavList />
                 </div>
                 <IconButton
