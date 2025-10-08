@@ -11,7 +11,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import {NavLink} from "react-router-dom"
 function NavList() {
     return (
-        <div className="container mx-auto flex flex-col lg:flex-row justify-between">
+        <div className="container mx-auto flex flex-col lg:items-center lg:flex-row justify-between">
             <ul className="my-2 flex flex-col gap-2 text-gray-500 lg:mb-0 lg:mt-0 lg:flex-row lg:gap-3">
                 <Typography
                     as={NavLink}
@@ -46,7 +46,7 @@ function NavList() {
                     ContactUs
                 </Typography>
             </ul>
-            <ul className="my-2 flex flex-col flex-wrap gap-2 lg:mb-0 lg:mt-0 md:flex-row lg:gap-3">
+            <ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 md:flex-row lg:gap-3">
                 <Typography
                     as="li"
                 >
@@ -55,17 +55,17 @@ function NavList() {
                 <Typography
                     as="li"
                 >
-                    <Button variant="outlined" color="green" className="hover:bg-green-500 hover:text-white py-3 px-4">Search</Button>
+                    <Button variant="outlined" color="green" className="hover:bg-green-500 hover:text-white py-3 px-4 w-full">Search</Button>
                 </Typography>
                 <Typography
                     as="li"
                 >
-                    <Button variant="outlined" color="red" className="hover:bg-red-500 hover:text-white py-3 px-4">Search Series</Button>
+                    <Button variant="outlined" color="red" className="hover:bg-red-500 hover:text-white py-3 px-4 w-full">Search Series</Button>
                 </Typography>
                 <Typography
                     as="li"
                 >
-                    <Button variant="outlined" color="cyan" className="hover:bg-cyan-500 hover:text-white py-3 px-4">LogIn</Button>
+                    <Button variant="outlined" color="cyan" className="hover:bg-cyan-500 hover:text-white py-3 px-4 w-full">LogIn</Button>
                 </Typography>
             </ul>
         </div>
