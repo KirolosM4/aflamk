@@ -8,6 +8,7 @@ import {
     Button,
     Rating,
 } from "@material-tailwind/react";
+import ErrorGetData from "../component/ErrorGetData";
 const TopMovies = () => {
     const dispatch = useDispatch();
     const {topMovies,loadingTopMovies,errorTopMovies} = useSelector(reducer=>reducer.HomeRedu)
@@ -24,7 +25,7 @@ const TopMovies = () => {
                 :
                 errorTopMovies
                 ?
-                <p className="text-red-500 text-3xl text-center">try again later 🙁</p>
+                <ErrorGetData/>
                 :
                 <div className=" grid grid-cols-1 justify-items-center gap-5 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
                     {
@@ -39,7 +40,10 @@ const TopMovies = () => {
                                 </CardHeader>
                                 <CardBody className="text-white flex flex-col justify-around grow">
                                     <p className="text-xl">TITLE : {title}</p>
-                                    <p className="flex flex-wrap justify-between"><span>RATE: <span className="text-[#0DCAF0]">{vote_average}</span></span><span><Rating value={Math.floor(vote_average/2)} readonly/></span></p>
+                                    <div className="flex flex-wrap justify-between">
+                                        <span>RATE: <span className="text-[#0DCAF0]">{vote_average}</span></span>
+                                        <Rating value={Math.floor(vote_average/2)} readonly/>
+                                    </div>
                                     <Button className="py-3 px-4 w-fit text-[#0DCAF0] bg-[#212529] self-center hover:bg-[#0DCAF0] hover:text-[#212529] border-[#0DCAF0]" variant="outlined" color="white">DETAILS</Button>
                                 </CardBody>
                             </Card>

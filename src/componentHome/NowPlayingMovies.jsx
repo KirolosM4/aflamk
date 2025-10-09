@@ -6,6 +6,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
+import ErrorGetData from "../component/ErrorGetData";
 
 const NowPlayingMovies = () => {
     const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const NowPlayingMovies = () => {
                 :
                 errNowPlayingMovies
                 ?
-                <p className="text-red-500 text-3xl text-center">try again later 🙁</p>
+                <ErrorGetData/>
                 :
                 <Swiper
                 navigation={true}

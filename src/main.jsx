@@ -10,7 +10,7 @@ createRoot(document.getElementById('root')).render(
   <Provider store={Store}>
     <BrowserRouter>
       <ThemeProvider>
-        <App />
+        <App/>
       </ThemeProvider>
     </BrowserRouter>
   </Provider>,
