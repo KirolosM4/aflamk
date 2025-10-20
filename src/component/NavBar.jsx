@@ -87,7 +87,7 @@ const MainNav =  () => {
     }, []);
     
     return (
-        <Navbar className="mx-auto max-w-screen-3xl px-6 py-3 bg-[#212529] rounded-none border-0">
+        <Navbar className="mx-auto max-w-screen-3xl px-6 py-3 bg-[#212529] bg-opacity-100 rounded-none border-0">
             <div className="container mx-auto flex items-center justify-between text-blue-gray-900 text-white">
                 <Typography
                 as="a"

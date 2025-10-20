@@ -7,9 +7,11 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 import ErrorGetData from "../component/ErrorGetData";
+import { useNavigate } from "react-router-dom";
 
 const NowPlayingMovies = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [countslide,setCountSlide] = useState(1);
     const {nowPlayingMovies,loadingNowPlayingMovies,errNowPlayingMovies} = useSelector(reducer=>reducer.HomeRedu)
     
@@ -44,9 +46,9 @@ const NowPlayingMovies = () => {
                 slidesPerView={countslide}
                     >
                     {
-                        nowPlayingMovies.map(({id,poster_path})=>(
+                        nowPlayingMovies.map(({id,poster_path,title})=>(
                          <SwiperSlide key={id} className="flex justify-items-center">
-                            <img className="w-[60%] h-full object-cover md:w-[75%] md:px-2" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${poster_path}`} alt="" />
+                            <img className="w-[60%] h-full object-cover md:w-[75%] md:px-2 cursor-pointer" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${poster_path}`} onClick={()=>navigate(`/movie/${id}/title/${title}`)} alt="" />
                         </SwiperSlide>
                     ))
                     }
