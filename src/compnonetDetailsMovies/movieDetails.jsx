@@ -9,7 +9,7 @@ import {Button} from "@material-tailwind/react"
 import ErrorGetData from "../component/ErrorGetData"
 const MovieDetails = () => {
     const navigate = useNavigate();
-    const {movieId,movieTitle} = useParams();
+    const {movieId} = useParams();
     const {detailsMovie:{poster_path,backdrop_path,title,release_date,original_language,genres,runtime,overview},creditMovie,loadingMovieDetails,errMovieDetails,loadingCredit,errCredit} = useSelector(reducer=>reducer.movieDetails)
     const dispatch = useDispatch();
     useEffect(()=>{
