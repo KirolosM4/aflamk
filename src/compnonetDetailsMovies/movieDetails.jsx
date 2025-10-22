@@ -54,11 +54,11 @@ const MovieDetails = () => {
                         <p className="flex flex-col"><span className="text-2xl">{creditMovie?.crew?.[2]?.["name"] || ""}</span><span className="text-yellow-500">{creditMovie?.crew?.[1]?.["known_for_department"] || ""}</span></p>
                     </div>
                     <div className="flex justify-around py-3">
-                        <p className="flex flex-col gap-3 text-center"><HiDocumentAdd color="green" className="text-2xl self-center"/><span className="text-white">AddTo WatchList</span></p>
-                        <p className="flex flex-col text-center"><CiStar color="yellow" className="text-2xl self-center"/><span className="text-white">Rate Movie</span></p>
-                        <p className="flex flex-col text-center"><FaYoutube color="red" className="text-2xl self-center" /><span className="text-white">Play Trailer</span></p>
+                        <p className="flex flex-col gap-3 text-center"><HiDocumentAdd color="green" className="text-2xl self-center relative"/><span className="text-white">AddTo WatchList</span></p>
+                        <p className="flex flex-col text-center"><CiStar color="yellow" className="text-2xl self-center relative"/><span className="text-white">Rate Movie</span></p>
+                        <p className="flex flex-col text-center"><FaYoutube color="red" className="text-2xl self-center relative" /><span className="text-white">Play Trailer</span></p>
                     </div>
-                    <Button className="py-3 px-4 w-fit text-[#0DCAF0] bg-transparent self-center   hover:bg-[#0DCAF0] hover:text-[#212529] border-[#0DCAF0]" variant="outlined" color="white" onClick={()=>navigate(-1)}>Back a step</Button>
+                    <Button className="py-3 px-4 w-fit text-[#0DCAF0] bg-transparent self-center relative hover:bg-[#0DCAF0] hover:text-[#212529] border-[#0DCAF0]" variant="outlined" color="white" onClick={()=>navigate(-1)}>Back a step</Button>
                 </div>
             </div>
         </div>
