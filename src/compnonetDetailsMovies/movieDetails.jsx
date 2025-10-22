@@ -30,7 +30,7 @@ const MovieDetails = () => {
             <ErrorGetData/>
         </div>
         :
-        <div className="relative bg-no-repeat bg-cover bg-center before:opacity-25 before:content-[''] before:absolute before:top-0 before:h-full before:w-full before:bg-gradient-to-b before:from-black before:via-transparent before:to-black" style={{backgroundImage:`url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${backdrop_path})`}}>
+        <div className="relative bg-no-repeat bg-cover bg-center" style={{backgroundImage:`url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${backdrop_path})`}}>
             <p className="text-2xl p-3 text-[#0DCAF0] font-bold text-center md:text-3xl">Movie-Details</p>
             <div className="flex flex-col gap-5 text-white md:flex-row">
                 <div className="flex justify-center md:justify-end">
@@ -53,10 +53,10 @@ const MovieDetails = () => {
                         <span>||</span>
                         <p className="flex flex-col"><span className="text-2xl">{creditMovie?.crew?.[2]?.["name"] || ""}</span><span className="text-yellow-500">{creditMovie?.crew?.[1]?.["known_for_department"] || ""}</span></p>
                     </div>
-                    <div className="flex justify-around py-3">
+                    <div className="flex flex-wrap justify-between items-center py-3 md:justify-around">
                         <p className="flex flex-col gap-3 text-center"><HiDocumentAdd color="green" className="text-2xl self-center relative"/><span className="text-white">AddTo WatchList</span></p>
-                        <p className="flex flex-col text-center"><CiStar color="yellow" className="text-2xl self-center relative"/><span className="text-white">Rate Movie</span></p>
-                        <p className="flex flex-col text-center"><FaYoutube color="red" className="text-2xl self-center relative" /><span className="text-white">Play Trailer</span></p>
+                        <p className="flex flex-col gap-3 text-center"><CiStar color="yellow" className="text-2xl self-center relative"/><span className="text-white">Rate Movie</span></p>
+                        <p className="flex flex-col gap-3 text-center"><FaYoutube color="red" className="text-2xl self-center relative" /><span className="text-white">Play Trailer</span></p>
                     </div>
                     <Button className="py-3 px-4 w-fit text-[#0DCAF0] bg-transparent self-center relative hover:bg-[#0DCAF0] hover:text-[#212529] border-[#0DCAF0]" variant="outlined" color="white" onClick={()=>navigate(-1)}>Back a step</Button>
                 </div>
