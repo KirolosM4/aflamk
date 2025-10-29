@@ -30,28 +30,36 @@ const MovieDetails = () => {
             <ErrorGetData/>
         </div>
         :
-        <div className="relative bg-no-repeat bg-cover bg-center" style={{backgroundImage:`url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${backdrop_path})`}}>
-            <p className="text-2xl p-3 text-[#0DCAF0] font-bold text-center md:text-3xl">Movie-Details</p>
-            <div className="flex flex-col gap-5 text-white md:flex-row">
-                <div className="flex justify-center md:justify-end">
-                    <img className="w-[70%] h-[90%]" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${poster_path}`} alt="" />
+        <div className="relative bg-no-repeat bg-cover bg-center before:opacity-75 before:content-[''] before:absolute before:top-0 before:h-full before:w-full before:bg-gradient-to-b before:from-black before:via-transparent before:to-black" style={{backgroundImage:`url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${backdrop_path})`}}>
+            <p className="relative text-2xl p-3 text-[#0DCAF0] font-bold text-center md:text-3xl">Movie-Details</p>
+            <div className="flex flex-col gap-5 text-white lg:flex-row relative">
+                <div className="flex justify-center lg:justify-end">
+                    <img className="w-[70%] sm:w-[50%] md:w-[30%] lg:w-[70%] h-[90%]" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${poster_path}`} alt="" />
                 </div>
-                <div className="w-full p-3 flex flex-col md:w-[70%]">
-                    <p className="text-2xl font-bold md:text-3xl py-2">{title}</p>
-                    <p className="py-3">{release_date} <span className="capitalize">({original_language})</span> 👉 {genres?.map(({name},index)=>(<span key={index}> {name}, </span>))} 👈 {Math.floor(runtime / 60)}h {(runtime % 60)} 1min </p>
-                    <p className="leading-9"><span className="text-2xl text-[#0DCAF0] font-bold text-center md:text-3xl">OverFlow : </span> <span>{overview}</span></p>
-                    <p className="text-2xl text-[#0DCAF0] py-5 font-bold text-center md:text-left md:text-3xl">Casting </p>
+                <div className="w-full p-3 flex flex-col lg:w-[70%] text-center md:text-left">
+                    <p className="text-2xl font-bold py-2 md:text-3xl">{title}</p>
+                    <p className="py-3">{release_date} <span className="capitalize">({original_language})</span> 👉 {genres?.map(({name},index)=>(<span key={index}> {name}, </span>))} 👈 {Math.floor(runtime / 60)}h {(runtime % 60)} min </p>
+                    <p className="leading-9"><span className="text-2xl text-[#0DCAF0] font-bold md:text-3xl">OverFlow : </span> <span>{overview}</span></p>
+                    <p className="text-2xl text-[#0DCAF0] py-5 font-bold text-center lg:text-left md:text-3xl">Casting </p>
                     <div className="flex flex-col justify-around py-3 text-center md:flex-row">
-                        <p className="flex flex-col"><span className="text-2xl">{creditMovie?.cast?.[0]?.["name"] || ""}</span><span className="text-yellow-500">{creditMovie?.cast?.[0]?.["known_for_department"] || ""}</span></p>
-                        <span>||</span>
-                        <p className="flex flex-col"><span className="text-2xl">{creditMovie?.cast?.[1]?.["name"] || ""}</span><span className="text-yellow-500">{creditMovie?.cast?.[1]?.["known_for_department"] || ""}</span></p>
+                        {
+                            creditMovie?.cast?.slice(0,2)?.map(({name,known_for_department},index)=>(
+                                <>
+                                    <p key={index} className="flex flex-col"><span className="text-2xl">{name || ""}</span><span className="text-yellow-500">{known_for_department || ""}</span></p>
+                                    {index > 0 ? "" : <span>||</span>}
+                                </>
+                            ))
+                        }
                     </div>
                     <div className="flex flex-col justify-around py-3 text-center md:flex-row">
-                        <p className="flex flex-col"><span className="text-2xl">{creditMovie?.crew?.[0]?.["name"] || ""}</span><span className="text-yellow-500">{creditMovie?.crew?.[0]?.["known_for_department"] || ""}</span></p>
-                        <span>||</span>
-                        <p className="flex flex-col"><span className="text-2xl">{creditMovie?.crew?.[1]?.["name"] || ""}</span><span className="text-yellow-500">{creditMovie?.crew?.[1]?.["known_for_department"] || ""}</span></p>
-                        <span>||</span>
-                        <p className="flex flex-col"><span className="text-2xl">{creditMovie?.crew?.[2]?.["name"] || ""}</span><span className="text-yellow-500">{creditMovie?.crew?.[1]?.["known_for_department"] || ""}</span></p>
+                        {
+                            creditMovie?.crew?.slice(0,3)?.map(({name,known_for_department},index)=>(
+                                <>
+                                    <p key={index} className="flex flex-col"><span className="text-2xl">{name || ""}</span><span className="text-yellow-500">{known_for_department || ""}</span></p>
+                                    {index > 1 ? "" : <span>||</span>}
+                                </>
+                            ))
+                        }
                     </div>
                     <div className="flex flex-wrap justify-between items-center py-3 md:justify-around">
                         <p className="flex flex-col gap-3 text-center"><HiDocumentAdd color="green" className="text-2xl self-center relative"/><span className="text-white">AddTo WatchList</span></p>

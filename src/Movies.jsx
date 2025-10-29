@@ -9,7 +9,10 @@ import {
     Rating,
 } from "@material-tailwind/react";
 import Pagination from "./componentMoviesAndSeries/Pagination";
+import {useNavigate} from "react-router-dom";
+
 const Movies = () => {
+    const navigate = useNavigate();
     const [numberPagination,setNumberPagination] = useState(1);
     const {loadingMovies,movies,errorMovies} = useSelector(reducer=>reducer.MoviesRed)
     const dispatch  = useDispatch();
@@ -34,7 +37,7 @@ const Movies = () => {
                         {
                             movies.map(({id,poster_path,title,vote_average})=>(
                                 <Card key={id} className="mt-6 w-[75%] bg-[#212529] md:w-[95%]">
-                                    <CardHeader color="blue-gray" className="m-0 h-[75%] md:h-[70%] rounded-none shadow-none">
+                                    <CardHeader className="m-0 h-[75%] md:h-[70%] rounded-none shadow-none">
                                         <img
                                         src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${poster_path}`}
                                         alt="card-image"
@@ -47,7 +50,7 @@ const Movies = () => {
                                             <span>RATE: <span className="text-[#0DCAF0]">{vote_average}</span></span>
                                             <Rating value={Math.floor(vote_average/2)} readonly/>
                                         </div>
-                                        <Button className="py-3 px-4 w-fit text-[#0DCAF0] bg-[#212529] self-center hover:bg-[#0DCAF0] hover:text-[#212529] border-[#0DCAF0]" variant="outlined" color="white">DETAILS</Button>
+                                        <Button className="py-3 px-4 w-fit text-[#0DCAF0] bg-[#212529] self-center hover:bg-[#0DCAF0] hover:text-[#212529] border-[#0DCAF0]" variant="outlined" color="white" onClick={()=>navigate(`/movie/${id}/title/${title}`)}>DETAILS</Button>
                                     </CardBody>
                                 </Card>
                             ))
