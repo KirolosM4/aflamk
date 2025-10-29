@@ -30,7 +30,7 @@ const MovieDetails = () => {
             <ErrorGetData/>
         </div>
         :
-        <div className="relative bg-no-repeat bg-cover bg-center before:opacity-75 before:content-[''] before:absolute before:top-0 before:h-full before:w-full before:bg-gradient-to-b before:from-black before:via-transparent before:to-black" style={{backgroundImage:`url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${backdrop_path})`}}>
+        <div className="relative bg-no-repeat bg-cover bg-center before:opacity-100 before:content-[''] before:absolute before:top-0 before:h-full before:w-full before:bg-gradient-to-b before:from-black before:via-transparent before:to-black" style={{backgroundImage:`url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${backdrop_path})`}}>
             <p className="relative text-2xl p-3 text-[#0DCAF0] font-bold text-center md:text-3xl">Movie-Details</p>
             <div className="flex flex-col gap-5 text-white lg:flex-row relative">
                 <div className="flex justify-center lg:justify-end">
