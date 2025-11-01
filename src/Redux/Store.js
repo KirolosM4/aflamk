@@ -4,6 +4,7 @@ import {MoviesRed} from  "./Slices/MoviesSlice";
 import { SeriesRed } from "./Slices/SeriesSlice";
 import { movieDetails } from "./Slices/DetailsMovieSlice";
 import { seriesDetails } from "./Slices/DetailsSeriesSlice";
+import { ReviewsData } from "./Slices/ReviewsSlice";
 const Store = configureStore({
     reducer : {
         HomeRedu,
@@ -11,6 +12,7 @@ const Store = configureStore({
         SeriesRed,
         movieDetails,
         seriesDetails,
+        ReviewsData,
     }
 })
 
