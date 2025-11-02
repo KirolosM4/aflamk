@@ -3,7 +3,6 @@ import MovieDetails from "./compnonetDetailsMovies/movieDetails";
 import BilledCast from "./compnonetDetailsMovies/BilledCast";
 import Social from "./compnonetDetailsMovies/Social";
 import KeyWords from "./compnonetDetailsMovies/keyWords";
-
 const DetailsMovies = () => {
     return(
         <div className="bg-black">
