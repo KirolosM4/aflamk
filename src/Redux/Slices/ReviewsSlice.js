@@ -37,7 +37,6 @@ const ReviewsSlice = createSlice({
         });
         builder.addCase(getReviews.fulfilled,(state,{payload})=>{
             state.reviews = payload.results;
-            console.log(state.reviews)
             state.loadingReviews = false;
             state.errReviews = false;
         });

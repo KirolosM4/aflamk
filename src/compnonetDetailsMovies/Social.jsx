@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import { getReviews } from "../Redux/Slices/ReviewsSlice";
 import ErrorGetData from "../component/ErrorGetData";
-import {Button} from "@material-tailwind/react";
 
 const Social = () => {
     const {detailsMovie:{title}} = useSelector(reducer=>reducer.movieDetails)
