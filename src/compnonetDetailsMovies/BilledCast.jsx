@@ -4,7 +4,6 @@ import {
     CardHeader,
     CardBody,
 } from "@material-tailwind/react";
-import {useNavigate} from "react-router-dom";
 import ErrorGetData from "../component/ErrorGetData";
 import { FaArrowRightLong } from "react-icons/fa6";
 const BilledCast = () => {

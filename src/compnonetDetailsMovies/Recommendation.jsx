@@ -51,14 +51,14 @@ const Recommendation = () => {
                     {
                         recommendation?.map(({id,poster_path,vote_average,title})=>(
                             <Card key={id} className="bg-[#212529] flex flex-col justify-between">
-                                <CardHeader className="m-0 p-2 shadow-none w-[50vw] md:w-[25vw] lg:w-[22vw] bg-gray">
+                                <CardHeader className="m-0 p-2 shadow-none w-[70vw] md:w-[30vw] lg:w-[22vw] bg-gray">
                                     <img
                                     src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${poster_path}`}
                                     alt="card-image"
                                     className=" h-full w-full rounded"
                                     />
                                 </CardHeader>
-                                <CardBody className="text-white px-2 py-0 md:p-3 text-[0.9em] flex justify-between items-center grow justify-self-center">
+                                <CardBody className="text-white px-2 py-3 md:p-3 text-[0.9em] flex justify-between items-center grow justify-self-center">
                                     <p>{title}</p>
                                     <p className="text-[#0DCAF0]">{Math.round(vote_average * 10)}%</p>
                                 </CardBody>
