@@ -52,21 +52,23 @@ const KeyWords = () => {
         getLinkPages();
     },[])
     return(
-        <div className="p-11 text-white text-xl hidden w-[30%] lg:block">
-            <div className="text-2xl flex justify-between">
+        <div className="p-11 text-white text-xl w-full lg:w-[30%]">
+            <div className="text-2xl flex justify-around lg:justify-between">
                 <Link to={linkPages.facebook_id && `https://www.facebook.com/${linkPages.facebook_id}`} className="hover:text-blue-700 text-[#0DCAF0]" onClick={()=>!linkPages.facebook_id && alert("page not found")}><FaFacebook /></Link>
                 <Link to={linkPages.twitter_id && `https://www.twitter.com/${linkPages.twitter_id}`} className="hover:text-blue-700 text-[#0DCAF0]" onClick={()=>!linkPages.twitter_id && alert("page not found")}><FaTwitter /></Link>
                 <Link to={linkPages.twitter_id && `https://www.instagram.com/${linkPages.instagram_id}`} className="hover:text-blue-700 text-[#0DCAF0]" onClick={()=>!linkPages.instagram_id && alert("page not found")}><FaInstagram /></Link>
                 <Link to={homepage} className="hover:text-blue-700 text-[#0DCAF0]" onClick={()=>!homepage && alert("page not found")}><AiOutlineHome /></Link>
             </div>
-            <p className="py-4">Status</p>
-            <p className="text-sm text-[#0DCAF0]">{status || ""}</p>
-            <p className="py-4">Original Language</p>
-            <p className="text-sm text-[#0DCAF0] uppercase">{original_language || ""}</p>
-            <p className="py-4">Budget</p>
-            <p className="text-sm text-[#0DCAF0] uppercase">{budget || "-"}</p>
-            <p className="py-4">Revenue</p>
-            <p className="text-sm text-[#0DCAF0] uppercase">{revenue || "-"}</p>
+            <div className="text-center lg:text-left">
+                <p className="py-4">Status</p>
+                <p className="text-sm text-[#0DCAF0]">{status || ""}</p>
+                <p className="py-4">Original Language</p>
+                <p className="text-sm text-[#0DCAF0] uppercase">{original_language || ""}</p>
+                <p className="py-4">Budget</p>
+                <p className="text-sm text-[#0DCAF0] uppercase">{budget || "-"}</p>
+                <p className="py-4">Revenue</p>
+                <p className="text-sm text-[#0DCAF0] uppercase">{revenue || "-"}</p>
+            </div>
             <p className="text-3xl py-3 text-[#0DCAF0] font-bold">Keywords</p>
             {
                 loadingKeyWords

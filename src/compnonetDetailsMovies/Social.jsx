@@ -27,15 +27,15 @@ const Social = () => {
                 ?
                 <ErrorGetData/>
                 :
-                    <div className="bg-[#212529] text-white p-5 flex flex-col items-center gap-5 text-center md:text-left md:items-start md:grid md:grid-cols-12 border-t-2 border-gray-500">
+                <div className="bg-[#212529] text-white p-5 flex flex-col items-center gap-5 text-center md:flex-row md:text-left md:items-start border-t-2 border-gray-500">
                     {
                         reviews.length == 0
                         ?
                         <p className="col-span-11">We don't have any reviews for <span className="text-[#0DCAF0]">{title}</span></p>
                         :
                         <>
-                            <p className="bg-gray-500 text-2xl col-start-1 h-16 w-16 rounded-full flex justify-center items-center">R</p>
-                            <div className="col-start-2 col-span-10 flex flex-col gap-3">
+                            <p className="bg-gray-500 text-2xl h-16 w-16 p-7 rounded-full flex justify-center items-center">R</p>
+                            <div className="flex flex-col gap-3">
                                 <p className="text-2xl">A review by <span className="text-[#0DCAF0] font-bold"> {reviews[0]?.author}</span></p>
                                 <p>Written by <span className="text-[#0DCAF0] font-bold"> {reviews[0]?.author}</span> on <span className="text-[#0DCAF0] font-bold">{new Date(reviews[0]?.created_at).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span></p>
                                 <p className="text-blue-500">Content:-</p>

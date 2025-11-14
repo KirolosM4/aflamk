@@ -9,7 +9,7 @@ const DetailsMovies = () => {
     return(
         <div className="bg-black">
             <MovieDetails/>
-            <div className="flex">
+            <div className="flex flex-col lg:flex-row">
                 <div className="w-full lg:w-[75%]">
                     <BilledCast/>
                     <Social/>

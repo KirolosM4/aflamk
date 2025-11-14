@@ -14,53 +14,65 @@ const Media = () => {
 
     const VideoView = () => {
         return(
-            videos?.slice(0,5)?.map(({key},index)=>(
-                <Card key={index} className="bg-[#212529] flex flex-col justify-between p-2">
-                    {
-                        index == 4
-                        ?
-                        <p className="text-white w-[50vw] md:w-[25vw] lg:w-[15vw] flex justify-center items-center h-full gap-3">Show More <FaArrowRightLong /> </p>
-                        :
-                        <CardHeader className="m-0 rounded-none shadow-none w-[100vw] sm:w-[60vw] md:w-[40vw] lg:w-[30vw] h-screen bg-gray">
-                            <iframe className="w-full h-full" src={`https://www.youtube.com/embed/${key}?si=OtXxU9-V7xYVjVni`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </CardHeader>
-                    }
-                </Card>
-            ))
+            <div className={`overflow-x-auto  flex flex bg-[#212529] ${videos.length == 0 ? "h-fit" : "h-[40vh] sm:h-[45vh] md:h-[50vh] lg:h-[30vh] xl:h-[50vh]"}`}>
+                {
+                    videos.length == 0
+                    ?
+                    <p className="p-3 text-white">no video added</p>
+                    :
+                    videos?.slice(0,5)?.map(({key},index)=>(
+                        <Card key={index} className="bg-[#212529] flex flex-col justify-between p-2">
+                            {
+                                index == 4
+                                ?
+                                <p className="text-white w-[50vw] md:w-[25vw] lg:w-[15vw] flex justify-center items-center h-full gap-3">Show More <FaArrowRightLong /> </p>
+                                :
+                                <CardHeader className="m-0 rounded-none shadow-none w-[85vw] md:w-[40vw] lg:w-[35vw] h-screen bg-gray">
+                                    <iframe className="w-full h-full" src={`https://www.youtube.com/embed/${key}?si=OtXxU9-V7xYVjVni`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </CardHeader>
+                            }
+                        </Card>
+                    ))
+                }
+            </div>
         )
     }
     const BackDrops = () => {
         return(
-            backdrops?.slice(0,7)?.map(({file_path},index)=>(
-                <Card key={index} className="bg-[#212529] flex flex-col justify-between p-2">
-                    {
-                        index == 6
-                        ?
-                        <p className="text-white w-[50vw] md:w-[25vw] lg:w-[15vw] flex justify-center items-center h-full gap-3">Show More <FaArrowRightLong /> </p>
-                        :
-                        <CardHeader className="m-0 rounded-none shadow-none w-[55vw] md:w-[40vw] lg:w-[30vw] xl:w-[15vw] h-screen bg-gray">
-                            <img className="h-full w-full" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${file_path}`} alt="" />
-                        </CardHeader>
-                    }
-                </Card>
-            ))
+            <div className="overflow-x-scroll h-[50vh] flex flex bg-[#212529]">
+                {backdrops?.slice(0,7)?.map(({file_path},index)=>(
+                    <Card key={index} className="bg-[#212529] flex flex-col justify-between p-2">
+                        {
+                            index == 6
+                            ?
+                            <p className="text-white w-[50vw] md:w-[25vw] lg:w-[15vw] flex justify-center items-center h-full gap-3">Show More <FaArrowRightLong /> </p>
+                            :
+                            <CardHeader className="m-0 rounded-none shadow-none w-[50vw] md:w-[20vw] lg:w-[35vw] xl:w-[20vw] h-screen bg-gray">
+                                <img className="h-full w-full" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${file_path}`} alt="" />
+                            </CardHeader>
+                        }
+                    </Card>
+                ))}
+            </div>
         )
     }
     const Posters = () => {
         return(
-            posters?.slice(0,7)?.map(({file_path},index)=>(
-                <Card key={index} className="bg-[#212529] flex flex-col justify-between p-2">
-                    {
-                        index == 6
-                        ?
-                        <p className="text-white w-[50vw] md:w-[25vw] lg:w-[15vw] flex justify-center items-center h-full gap-3">Show More <FaArrowRightLong /> </p>
-                        :
-                        <CardHeader className="m-0 rounded-none shadow-none w-[55vw] md:w-[30vw] lg:w-[30vw] xl:w-[15vw] h-screen bg-gray">
-                            <img className="h-full w-full" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${file_path}`} alt="" />
-                        </CardHeader>
-                    }
-                </Card>
-            ))
+            <div className="overflow-x-scroll h-[50vh] flex flex bg-[#212529]">
+                {posters?.slice(0,7)?.map(({file_path},index)=>(
+                    <Card key={index} className="bg-[#212529] flex flex-col justify-between p-2">
+                        {
+                            index == 6
+                            ?
+                            <p className="text-white w-[50vw] md:w-[25vw] lg:w-[15vw] flex justify-center items-center h-full gap-3">Show More <FaArrowRightLong /> </p>
+                            :
+                            <CardHeader className="m-0 rounded-none shadow-none w-[50vw] md:w-[20vw] lg:w-[35vw] xl:w-[20vw] h-screen bg-gray">
+                                <img className="h-full w-full" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${file_path}`} alt="" />
+                            </CardHeader>
+                        }
+                    </Card>
+                ))}
+            </div>
         )
     }
 
@@ -86,9 +98,9 @@ const Media = () => {
                 ?
                 <ErrorGetData/>
                 :
-                <div className="overflow-x-scroll h-[50vh] sm:h-[60vh] md:h-[40vh] flex flex bg-[#212529]">
+                <>
                     {mediaView == "video" ? <VideoView/> : mediaView == "backdrop" ? <BackDrops/> : <Posters/>}
-                </div>
+                </>
             }
         </div>
     )
