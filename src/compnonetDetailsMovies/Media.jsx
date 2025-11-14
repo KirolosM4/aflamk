@@ -27,7 +27,7 @@ const Media = () => {
                                 ?
                                 <p className="text-white w-[50vw] md:w-[25vw] lg:w-[15vw] flex justify-center items-center h-full gap-3">Show More <FaArrowRightLong /> </p>
                                 :
-                                <CardHeader className="m-0 rounded-none shadow-none w-[85vw] md:w-[40vw] lg:w-[35vw] h-screen bg-gray">
+                                <CardHeader className="m-0 rounded-none shadow-none w-[80vw] md:w-[40vw] lg:w-[35vw] h-screen bg-gray">
                                     <iframe className="w-full h-full" src={`https://www.youtube.com/embed/${key}?si=OtXxU9-V7xYVjVni`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                                 </CardHeader>
                             }
