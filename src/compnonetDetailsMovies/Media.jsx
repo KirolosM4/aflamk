@@ -39,39 +39,51 @@ const Media = () => {
     }
     const BackDrops = () => {
         return(
-            <div className="overflow-x-scroll h-[50vh] flex flex bg-[#212529]">
-                {backdrops?.slice(0,7)?.map(({file_path},index)=>(
-                    <Card key={index} className="bg-[#212529] flex flex-col justify-between p-2">
-                        {
-                            index == 6
-                            ?
-                            <p className="text-white w-[50vw] md:w-[25vw] lg:w-[15vw] flex justify-center items-center h-full gap-3">Show More <FaArrowRightLong /> </p>
-                            :
-                            <CardHeader className="m-0 rounded-none shadow-none w-[50vw] md:w-[20vw] lg:w-[35vw] xl:w-[20vw] h-screen bg-gray">
-                                <img className="h-full w-full" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${file_path}`} alt="" />
-                            </CardHeader>
-                        }
-                    </Card>
-                ))}
+            <div className={`overflow-x-scroll h-[50vh] flex flex bg-[#212529] ${backdrops.length == 0 ? "h-fit" : "h-[50vh]"}`}>
+                {
+                    backdrops.length == 0
+                    ?
+                    <p className="p-3 text-white">no video added</p>
+                    :
+                    backdrops?.slice(0,7)?.map(({file_path},index)=>(
+                        <Card key={index} className="bg-[#212529] flex flex-col justify-between p-2">
+                            {
+                                index == 6
+                                ?
+                                <p className="text-white w-[50vw] md:w-[25vw] lg:w-[15vw] flex justify-center items-center h-full gap-3">Show More <FaArrowRightLong /> </p>
+                                :
+                                <CardHeader className="m-0 rounded-none shadow-none w-[50vw] md:w-[20vw] lg:w-[35vw] xl:w-[20vw] h-screen bg-gray">
+                                    <img className="h-full w-full" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${file_path}`} alt="" />
+                                </CardHeader>
+                            }
+                        </Card>
+                    ))
+                }
             </div>
         )
     }
     const Posters = () => {
         return(
-            <div className="overflow-x-scroll h-[50vh] flex flex bg-[#212529]">
-                {posters?.slice(0,7)?.map(({file_path},index)=>(
-                    <Card key={index} className="bg-[#212529] flex flex-col justify-between p-2">
-                        {
-                            index == 6
-                            ?
-                            <p className="text-white w-[50vw] md:w-[25vw] lg:w-[15vw] flex justify-center items-center h-full gap-3">Show More <FaArrowRightLong /> </p>
-                            :
-                            <CardHeader className="m-0 rounded-none shadow-none w-[50vw] md:w-[20vw] lg:w-[35vw] xl:w-[20vw] h-screen bg-gray">
-                                <img className="h-full w-full" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${file_path}`} alt="" />
-                            </CardHeader>
-                        }
-                    </Card>
-                ))}
+            <div className={`overflow-x-scroll h-[50vh] flex flex bg-[#212529] ${posters.length == 0 ? "h-fit" : "h-[50vh]"}`}>
+                {
+                    posters.length == 0
+                    ?
+                    <p className="p-3 text-white">no video added</p>
+                    :
+                    posters?.slice(0,7)?.map(({file_path},index)=>(
+                        <Card key={index} className="bg-[#212529] flex flex-col justify-between p-2">
+                            {
+                                index == 6
+                                ?
+                                <p className="text-white w-[50vw] md:w-[25vw] lg:w-[15vw] flex justify-center items-center h-full gap-3">Show More <FaArrowRightLong /> </p>
+                                :
+                                <CardHeader className="m-0 rounded-none shadow-none w-[50vw] md:w-[20vw] lg:w-[35vw] xl:w-[20vw] h-screen bg-gray">
+                                    <img className="h-full w-full" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${file_path}`} alt="" />
+                                </CardHeader>
+                            }
+                        </Card>
+                    ))
+                }
             </div>
         )
     }

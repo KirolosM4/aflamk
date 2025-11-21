@@ -22,3 +22,17 @@
   animation: l5 1s infinite;
 }
 @keyframes l5 {to{transform: rotate(.5turn)}}
+
+.viewTrailerAnim {
+  animation : trailer 1s ease-in-out alternate forwards;
+  top:0;
+}
+
+@keyframes trailer {
+  0% {
+    top:0;
+  }
+  100% {
+    top:15%;
+  }
+}
