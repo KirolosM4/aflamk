@@ -30,7 +30,7 @@ const MovieDetails = () => {
             </div>
             :
             <div className="fixed top-0 h-full bg-black w-full flex justify-center z-50 bg-opacity-50" onClick={()=>setViewTrailer(false)}>
-                <iframe className="absolute w-1/3 h-[50vh] border-8 border-[#212529] viewTrailerAnim" src={`https://www.youtube.com/embed/${videos[0]?.key}?si=OtXxU9-V7xYVjVni`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe className="absolute w-[80%] h-1/3 border-8 border-[#212529] viewTrailerAnim md:h-[50vh] md:w-1/2 lg:w-1/3 lg:h-[40vh]" src={`https://www.youtube.com/embed/${videos[0]?.key}?si=OtXxU9-V7xYVjVni`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         )
     }
