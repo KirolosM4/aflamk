@@ -6,7 +6,9 @@ import {
 } from "@material-tailwind/react";
 import ErrorGetData from "../component/ErrorGetData";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 const BilledCast = () => {
+    const navigate = useNavigate();
     const {creditMovie,loadingCredit,errCredit} = useSelector(reducer=>reducer.movieDetails);
     return(
         <div className="p-7">
@@ -48,7 +50,7 @@ const BilledCast = () => {
                     }
                 </div>
             }
-            <p className="text-[#0DCAF0] py-2 text-center md:text-left">Full Cast & Crew</p>
+            <p className="text-[#0DCAF0] py-2 text-center md:text-left cursor-pointer" onClick={()=>navigate("cast")}>Full Cast & Crew</p>
         </div>
     )
 }

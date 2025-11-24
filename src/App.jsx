@@ -8,6 +8,7 @@ import Series from "./Series"
 import ContactUs from "./ContactUs";
 import DetailsMovies from "./DetailsMovies";
 import DetailsSeries from "./DetailsSeries";
+import AllCastAndCrew from "./compnonetDetailsMovies/AllCastAndCrew";
 const App = () => {
   return(
     <>
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/series" element={<Series/>}/>
         <Route path="/contactus" element={<ContactUs/>}/>
         <Route path="/movie/:movieId/title/:movieTitle" element={<DetailsMovies/>}/>
+        <Route path="/movie/:movieId/title/:movieTitle/cast" element={<AllCastAndCrew/>}/>
         <Route path="/series/:seriesId/title/:seriesTitle" element={<DetailsSeries/>}/>
       </Routes>
       <Footer/>

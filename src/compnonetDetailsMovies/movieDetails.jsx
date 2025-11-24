@@ -15,7 +15,6 @@ const MovieDetails = () => {
     const {movieId} = useParams();
     const {detailsMovie:{poster_path,backdrop_path,title,release_date,original_language,genres,runtime,overview},creditMovie,loadingMovieDetails,errMovieDetails,loadingCredit,errCredit} = useSelector(reducer=>reducer.movieDetails)
     const dispatch = useDispatch();
-    console.log(videos[0]?.key)
     useEffect(()=>{
         dispatch(getDetilsMovie(movieId));
         dispatch(getCreditsMovie(movieId));
