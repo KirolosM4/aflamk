@@ -82,7 +82,7 @@ const AllCastAndCrew = () => {
                         <div key={department} className="mb-8">
                             <h2 className="text-3xl font-bold text-[#0DCAF0] mb-4">{department}</h2>
                             {people.map(({id, name,profile_path,job}) => (
-                                <Card key={id} className="bg-[#212529] flex flex-row my-7 rounded-none">
+                                <Card key={id} className="bg-[#212529] flex flex-col items-center m-7 rounded-none md:flex-row md:mx-0">
                                     <CardHeader className="m-0 rounded-none shadow-none w-[50vw] md:w-[25vw] lg:w-[15vw] bg-gray">
                                         <img
                                         src={profile_path ? `https://image.tmdb.org/t/p/w600_and_h900_bestv2/${profile_path}` : "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg"}
