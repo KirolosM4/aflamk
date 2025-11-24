@@ -80,7 +80,7 @@ const AllCastAndCrew = () => {
                     <p className="text-2xl py-3 font-bold text-center text-white md:text-left md:text-3xl ">Crew <span className="text-[#0DCAF0]">{crew?.length}</span></p>
                     {Object.entries(groups).map(([department, people]) => (
                         <div key={department} className="mb-8">
-                            <h2 className="text-3xl font-bold text-[#0DCAF0] mb-4">{department}</h2>
+                            <h2 className="text-3xl text-center font-bold text-[#0DCAF0] mb-4 md:text-left">{department}</h2>
                             {people.map(({id, name,profile_path,job}) => (
                                 <Card key={id} className="bg-[#212529] flex flex-col items-center m-7 rounded-none md:flex-row md:mx-0">
                                     <CardHeader className="m-0 rounded-none shadow-none w-[50vw] md:w-[25vw] lg:w-[15vw] bg-gray">
