@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import {useParams } from "react-router-dom";
 import ErrorGetData from "../component/ErrorGetData"
-import { IoIosArrowRoundBack } from "react-icons/io";
 import { getCreditsMovie, getDetilsMovie } from "../Redux/Slices/DetailsMovieSlice";
 import {
     Card,
     CardHeader,
     CardBody,
 } from "@material-tailwind/react";
+import HeaderMedia from "./HeaderMedia";
 const AllCastAndCrew = () => {
     const dispatch = useDispatch();
     const {movieId} = useParams();
-    const {detailsMovie:{poster_path,release_date,original_title},creditMovie:{cast,crew},loadingMovieDetails,errMovieDetails,loadingCredit,errCredit} = useSelector(reducer=>reducer.movieDetails)
-    const date = new Date(release_date).getFullYear();
-    const navigate = useNavigate();
+    const {creditMovie:{cast,crew},loadingCredit,errCredit} = useSelector(reducer=>reducer.movieDetails)
     const [groups,setGroups] = useState({});
 
     useEffect(()=>{
@@ -26,7 +24,6 @@ const AllCastAndCrew = () => {
                 return acc;
             },{});
             setGroups(groups);
-            console.log(groups)
         }
     },[crew])
 
@@ -46,15 +43,7 @@ const AllCastAndCrew = () => {
         <ErrorGetData/>
         :
         <div className="bg-black">
-            <div className="bg-[#212529] text-white">
-                <div className="container mx-auto flex items-center gap-5 p-5">
-                    <img className="w-[8em]" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${poster_path}`} alt="" />
-                    <div>
-                        <p className="text-2xl">{original_title} <span className="text-gray-500">({date})</span></p>
-                        <p className="text-gray-500 flex gap-3 items-center hover:text-white cursor-pointer" onClick={()=>navigate(-1)}><IoIosArrowRoundBack /> Back to main</p>
-                    </div>
-                </div>
-            </div>
+            <HeaderMedia/>
             <div className="flex flex-col container mx-auto py-11 lg:grid lg:grid-cols-12">
                 <div className="col-start-1 col-span-4 bg-black">
                     <p className="text-2xl py-3 font-bold text-center text-white md:text-left md:text-3xl ">Cast <span className="text-[#0DCAF0]">{cast?.length}</span></p>

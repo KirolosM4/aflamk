@@ -9,6 +9,7 @@ import ContactUs from "./ContactUs";
 import DetailsMovies from "./DetailsMovies";
 import DetailsSeries from "./DetailsSeries";
 import AllCastAndCrew from "./compnonetDetailsMovies/AllCastAndCrew";
+import AllVideos from "./compnonetDetailsMovies/AllVideos";
 const App = () => {
   return(
     <>
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/contactus" element={<ContactUs/>}/>
         <Route path="/movie/:movieId/title/:movieTitle" element={<DetailsMovies/>}/>
         <Route path="/movie/:movieId/title/:movieTitle/cast" element={<AllCastAndCrew/>}/>
+        <Route path="/movie/:movieId/title/:movieTitle/videos" element={<AllVideos/>}/>
         <Route path="/series/:seriesId/title/:seriesTitle" element={<DetailsSeries/>}/>
       </Routes>
       <Footer/>

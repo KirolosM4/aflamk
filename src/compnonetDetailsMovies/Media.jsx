@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getMedia, getVideos} from "../Redux/Slices/MediaSlice";
 import { FaArrowRightLong } from "react-icons/fa6";
@@ -11,7 +11,7 @@ const Media = () => {
     const {movieId} = useParams();
     const {loadingMedia,errMedia,media:{backdrops,posters},loadingVideo,errVideo,videos} = useSelector(reducer=>reducer.mediaRedu);
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
     const VideoView = () => {
         return(
             <div className={`overflow-x-auto  flex flex bg-[#212529] ${videos.length == 0 ? "h-fit" : "h-[40vh] sm:h-[45vh] md:h-[50vh] lg:h-[30vh] xl:h-[50vh]"}`}>
@@ -20,12 +20,12 @@ const Media = () => {
                     ?
                     <p className="p-3 text-white">no video added</p>
                     :
-                    videos?.slice(0,5)?.map(({key},index)=>(
+                    videos?.slice(0,6)?.map(({key},index)=>(
                         <Card key={index} className="bg-[#212529] flex flex-col justify-between p-2">
                             {
-                                index == 4
+                                index == 5
                                 ?
-                                <p className="text-white w-[50vw] md:w-[25vw] lg:w-[15vw] flex justify-center items-center h-full gap-3">Show More <FaArrowRightLong /> </p>
+                                <p className="text-white w-[50vw] md:w-[25vw] lg:w-[15vw] flex justify-center items-center h-full gap-3 cursor-pointer" onClick={()=>navigate("videos")}>Show More <FaArrowRightLong /> </p>
                                 :
                                 <CardHeader className="m-0 rounded-none shadow-none w-[80vw] md:w-[40vw] lg:w-[35vw] h-screen bg-gray">
                                     <iframe className="w-full h-full" src={`https://www.youtube.com/embed/${key}?si=OtXxU9-V7xYVjVni`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -50,7 +50,7 @@ const Media = () => {
                             {
                                 index == 6
                                 ?
-                                <p className="text-white w-[50vw] md:w-[25vw] lg:w-[15vw] flex justify-center items-center h-full gap-3">Show More <FaArrowRightLong /> </p>
+                                <p className="text-white w-[50vw] md:w-[25vw] lg:w-[15vw] flex justify-center items-center h-full gap-3 cursor-pointer" onClick={()=>navigate("videos")}>Show More <FaArrowRightLong /> </p>
                                 :
                                 <CardHeader className="m-0 rounded-none shadow-none w-[50vw] md:w-[20vw] lg:w-[35vw] xl:w-[20vw] h-screen bg-gray">
                                     <img className="h-full w-full" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${file_path}`} alt="" />

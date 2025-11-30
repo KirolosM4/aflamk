@@ -43,7 +43,7 @@ const BilledCast = () => {
                                         </CardBody>
                                     </>
                                     :
-                                    <p className="text-white w-[50vw] md:w-[25vw] lg:w-[15vw] flex justify-center items-center h-full gap-3">Show More <FaArrowRightLong /> </p>
+                                    <p className="text-white w-[50vw] md:w-[25vw] lg:w-[15vw] flex justify-center items-center h-full gap-3 cursor-pointer" onClick={()=>navigate("cast")}>Show More <FaArrowRightLong /> </p>
                                 }
                             </Card>
                         ))
