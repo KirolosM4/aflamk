@@ -97,7 +97,7 @@ const Media = () => {
         <div className="px-7">
             <p className="text-2xl py-3 text-[#0DCAF0] font-bold">Media</p>
             <div className="flex gap-3 justify-between sm:justify-start md:gap-7">
-                <p className={`cursor-pointer text-sm py-5 md:p-5 text-[#9C27B0] ${mediaView == "video" ? "text-[#9C27B0] border-b-2 border-b-[#9C27B0] "  : "text-white"} `} onClick={()=>setMediaView("video")}>Videos ({videos?.length})</p>
+                <p className={`cursor-pointer text-sm py-5 md:p-5 text-[#9C27B0] ${mediaView == "video" ? "text-[#9C27B0] border-b-2 border-b-[#9C27B0]"  : "text-white"} `} onClick={()=>setMediaView("video")}>Videos ({videos?.length})</p>
                 <p className={`cursor-pointer text-sm py-5 md:p-5 text-[#9C27B0] ${mediaView == "backdrop" ? "text-[#9C27B0] border-b-2 border-b-[#9C27B0]"  : "text-white"} `} onClick={()=>setMediaView("backdrop")}>BACKDROPS ({backdrops?.length})</p>
                 <p className={`cursor-pointer text-sm py-5 md:p-5 text-[#9C27B0] ${mediaView == "poster" ? "text-[#9C27B0] border-b-2 border-b-[#9C27B0]"  : "text-white"} `} onClick={()=>setMediaView("poster")}>POSTERS ({posters?.length})</p>
             </div>
