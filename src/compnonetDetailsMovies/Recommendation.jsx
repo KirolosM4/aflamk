@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ErrorGetData from "../component/ErrorGetData";
 import {
     Card,
@@ -12,6 +12,7 @@ const Recommendation = () => {
     const [loadingReco,setLoadingReco] = useState(false);
     const [errReco,setErrReco] = useState(false);
     const {movieId} = useParams();
+    const navigate = useNavigate();
     const getRecom = () => {
         axios({
             method:"get",
@@ -33,7 +34,7 @@ const Recommendation = () => {
 
     useEffect(()=>{
         getRecom();
-    },[]);
+    },[movieId]);
 
     return(
         <div className="p-7">
@@ -50,7 +51,7 @@ const Recommendation = () => {
                 <div className="overflow-x-scroll flex flex gap-5">
                     {
                         recommendation?.map(({id,poster_path,vote_average,title})=>(
-                            <Card key={id} className="bg-[#212529] flex flex-col justify-between">
+                            <Card key={id} className="bg-[#212529] flex flex-col justify-between cursor-pointer" onClick={()=>navigate(`/movie/${id}/title/${title}`)}>
                                 <CardHeader className="m-0 p-2 shadow-none w-[70vw] md:w-[30vw] lg:w-[22vw] bg-gray">
                                     <img
                                     src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${poster_path}`}

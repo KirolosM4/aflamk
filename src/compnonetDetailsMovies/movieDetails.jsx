@@ -7,7 +7,8 @@ import { CiStar } from "react-icons/ci";
 import { FaYoutube } from "react-icons/fa";
 import {Button} from "@material-tailwind/react"
 import ErrorGetData from "../component/ErrorGetData"
-import { getVideos } from "../Redux/Slices/MediaSlice";
+import { getMedia, getVideos } from "../Redux/Slices/MediaSlice";
+import { getReviews } from "../Redux/Slices/ReviewsSlice";
 const MovieDetails = () => {
     const [viewTrailer,setViewTrailer] = useState(false);
     const {videos,loadingVideo,errVideo} = useSelector(reducer=>reducer.mediaRedu);
@@ -18,7 +19,7 @@ const MovieDetails = () => {
     useEffect(()=>{
         dispatch(getDetilsMovie(movieId));
         dispatch(getCreditsMovie(movieId));
-    },[])
+    },[movieId])
 
     const GetTrailer = () => {
         return(

@@ -50,7 +50,7 @@ const KeyWords = () => {
     useEffect(()=>{
         getKeyWoards();
         getLinkPages();
-    },[])
+    },[movieId])
     return(
         <div className="p-11 text-white text-xl w-full lg:w-[30%]">
             <div className="text-2xl flex justify-around lg:justify-between">

@@ -50,7 +50,7 @@ const Media = () => {
                             {
                                 index == 6
                                 ?
-                                <p className="text-white w-[50vw] md:w-[25vw] lg:w-[15vw] flex justify-center items-center h-full gap-3 cursor-pointer" onClick={()=>navigate("videos")}>Show More <FaArrowRightLong /> </p>
+                                <p className="text-white w-[50vw] md:w-[25vw] lg:w-[15vw] flex justify-center items-center h-full gap-3 cursor-pointer" onClick={()=>navigate("backdrops")}>Show More <FaArrowRightLong /> </p>
                                 :
                                 <CardHeader className="m-0 rounded-none shadow-none w-[50vw] md:w-[20vw] lg:w-[35vw] xl:w-[20vw] h-screen bg-gray">
                                     <img className="h-full w-full" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${file_path}`} alt="" />
@@ -75,7 +75,7 @@ const Media = () => {
                             {
                                 index == 6
                                 ?
-                                <p className="text-white w-[50vw] md:w-[25vw] lg:w-[15vw] flex justify-center items-center h-full gap-3">Show More <FaArrowRightLong /> </p>
+                                <p className="text-white w-[50vw] md:w-[25vw] lg:w-[15vw] flex justify-center items-center h-full gap-3 cursor-pointer" onClick={()=>navigate("posters")}>Show More <FaArrowRightLong /> </p>
                                 :
                                 <CardHeader className="m-0 rounded-none shadow-none w-[50vw] md:w-[20vw] lg:w-[35vw] xl:w-[20vw] h-screen bg-gray">
                                     <img className="h-full w-full" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${file_path}`} alt="" />
@@ -91,7 +91,7 @@ const Media = () => {
     useEffect(()=>{
         dispatch(getMedia(movieId));
         dispatch(getVideos(movieId));
-    },[]);
+    },[movieId]);
 
     return(
         <div className="px-7">

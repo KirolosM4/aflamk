@@ -30,7 +30,7 @@ const AllCastAndCrew = () => {
     useEffect(()=>{
         dispatch(getDetilsMovie(movieId));
         dispatch(getCreditsMovie(movieId));
-    },[])
+    },[movieId])
     return(
         loadingCredit
         ?

@@ -10,6 +10,9 @@ import DetailsMovies from "./DetailsMovies";
 import DetailsSeries from "./DetailsSeries";
 import AllCastAndCrew from "./compnonetDetailsMovies/AllCastAndCrew";
 import AllVideos from "./compnonetDetailsMovies/AllVideos";
+import AllReviews from "./compnonetDetailsMovies/AllReviews";
+import AllBackDrops from "./compnonetDetailsMovies/AllBackDrops";
+import AllPosters from "./compnonetDetailsMovies/AllPosters";
 const App = () => {
   return(
     <>
@@ -22,6 +25,9 @@ const App = () => {
         <Route path="/movie/:movieId/title/:movieTitle" element={<DetailsMovies/>}/>
         <Route path="/movie/:movieId/title/:movieTitle/cast" element={<AllCastAndCrew/>}/>
         <Route path="/movie/:movieId/title/:movieTitle/videos" element={<AllVideos/>}/>
+        <Route path="/movie/:movieId/title/:movieTitle/reviews" element={<AllReviews/>}/>
+        <Route path="/movie/:movieId/title/:movieTitle/backdrops" element={<AllBackDrops/>}/>
+        <Route path="/movie/:movieId/title/:movieTitle/posters" element={<AllPosters/>}/>
         <Route path="/series/:seriesId/title/:seriesTitle" element={<DetailsSeries/>}/>
       </Routes>
       <Footer/>
