@@ -15,7 +15,7 @@ const SeriesDetails = () => {
     useEffect(()=>{
         dispatch(getDetailsSeries(seriesId));
         dispatch(getCreditsSeries(seriesId));
-    },[])
+    },[seriesId])
 
     return(
        ( loadingSeriesDetails || loadingCredit)

@@ -39,7 +39,7 @@ const Media = () => {
     }
     const BackDrops = () => {
         return(
-            <div className={`overflow-x-scroll h-[50vh] flex flex bg-[#212529] ${backdrops.length == 0 ? "h-fit" : "h-[50vh]"}`}>
+            <div className={`overflow-x-scroll h-[55vh] flex flex bg-[#212529] ${backdrops.length == 0 ? "h-fit" : "h-[50vh]"}`}>
                 {
                     backdrops.length == 0
                     ?
@@ -64,7 +64,7 @@ const Media = () => {
     }
     const Posters = () => {
         return(
-            <div className={`overflow-x-scroll h-[50vh] flex flex bg-[#212529] ${posters.length == 0 ? "h-fit" : "h-[50vh]"}`}>
+            <div className={`overflow-x-scroll h-[55vh] flex flex bg-[#212529] ${posters.length == 0 ? "h-fit" : "h-[50vh]"}`}>
                 {
                     posters.length == 0
                     ?

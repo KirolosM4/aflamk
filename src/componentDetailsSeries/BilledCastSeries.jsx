@@ -7,9 +7,9 @@ import {
 import ErrorGetData from "../component/ErrorGetData";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-const BilledCast = () => {
+const BilledCastSeries = () => {
     const navigate = useNavigate();
-    const {creditMovie,loadingCredit,errCredit} = useSelector(reducer=>reducer.movieDetails);
+    const {creditSeries,loadingCredit,errCredit} = useSelector(reducer=>reducer.seriesDetails);
     return(
         <div className="p-7">
             <p className="text-2xl py-3 text-[#0DCAF0] font-bold">Top Billed Cast</p>
@@ -22,9 +22,9 @@ const BilledCast = () => {
                 ?
                 <ErrorGetData/>
                 :
-                <div className={`${creditMovie?.cast?.length > 5 && "overflow-x-scroll"} flex flex gap-5`}>
+                <div className={`${creditSeries?.cast?.length > 5 && "overflow-x-scroll"} flex flex gap-5`}>
                     {
-                        creditMovie?.cast?.slice(0,11).map(({id,name,character,profile_path},index)=>(
+                        creditSeries?.cast?.slice(0,11).map(({id,name,character,profile_path},index)=>(
                             <Card key={id} className="bg-[#212529] flex flex-col justify-between">
                                 {
                                     index < 10
@@ -55,4 +55,4 @@ const BilledCast = () => {
     )
 }
 
-export default BilledCast
+export default BilledCastSeries
