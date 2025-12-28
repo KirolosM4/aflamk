@@ -13,6 +13,8 @@ import AllVideos from "./compnonetDetailsMovies/AllVideos";
 import AllReviews from "./compnonetDetailsMovies/AllReviews";
 import AllBackDrops from "./compnonetDetailsMovies/AllBackDrops";
 import AllPosters from "./compnonetDetailsMovies/AllPosters";
+import AllCastAndCrewSeries from "./componentDetailsSeries/AllCastAndCrewSeries";
+import AllReviewsSeries from "./componentDetailsSeries/AllReviewsSeries";
 const App = () => {
   return(
     <>
@@ -29,6 +31,8 @@ const App = () => {
         <Route path="/movie/:movieId/title/:movieTitle/backdrops" element={<AllBackDrops/>}/>
         <Route path="/movie/:movieId/title/:movieTitle/posters" element={<AllPosters/>}/>
         <Route path="/series/:seriesId/title/:seriesTitle" element={<DetailsSeries/>}/>
+        <Route path="/series/:seriesId/title/:seriesTitle/cast" element={<AllCastAndCrewSeries/>}/>
+        <Route path="/series/:seriesId/title/:seriesTitle/reviews" element={<AllReviewsSeries/>}/>
       </Routes>
       <Footer/>
     </>

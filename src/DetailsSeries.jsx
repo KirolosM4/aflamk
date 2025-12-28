@@ -2,6 +2,9 @@ import React from "react";
 import SeriesDetails from "./componentDetailsSeries/seriesDetails";
 import BilledCastSeries from "./componentDetailsSeries/BilledCastSeries";
 import RecommendationSeries from "./componentDetailsSeries/RecommendationSeries";
+import SocialSeries from "./componentDetailsSeries/SocialSeries";
+import KeyWordsSeries from "./componentDetailsSeries/KeyWordsSeries";
+import LastSeason from "./componentDetailsSeries/lastSeason";
 const DetailsSeries = () => {
     return(
         <div className="bg-black">
@@ -9,11 +12,12 @@ const DetailsSeries = () => {
             <div className="flex flex-col lg:flex-row">
                 <div className="w-full lg:w-[75%]">
                     <BilledCastSeries/>
-                    {/* <Social/>
-                    <Media/> */}
+                    <LastSeason/>
+                    <SocialSeries/>
+                    {/* <Media/> */}
                     <RecommendationSeries/>
                 </div>
-                {/* <KeyWords/> */}
+                <KeyWordsSeries/>
             </div>
         </div>
     )
