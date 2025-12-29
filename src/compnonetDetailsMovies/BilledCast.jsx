@@ -22,7 +22,7 @@ const BilledCast = () => {
                 ?
                 <ErrorGetData/>
                 :
-                <div className={`${creditMovie?.cast?.length > 5 && "overflow-x-scroll"} flex flex gap-5`}>
+                <div className={`${(creditMovie?.cast?.length > 5 || window.innerWidth < 600) && "overflow-x-scroll"} flex flex gap-5`}>
                     {
                         creditMovie?.cast?.slice(0,11).map(({id,name,character,profile_path},index)=>(
                             <Card key={id} className="bg-[#212529] flex flex-col justify-between">
