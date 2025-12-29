@@ -54,7 +54,7 @@ const KeyWordsSeries = () => {
                 <p className="py-4">Original Language</p>
                 <p className="text-sm text-[#0DCAF0] uppercase">{original_language || ""}</p>
             </div>
-            <p className="text-3xl py-3 text-[#0DCAF0] font-bold">Keywords</p>
+            <p className="text-3xl text-center py-3 text-[#0DCAF0] font-bold md:text-left">Keywords</p>
             {
                 loadingKeyWords
                 ?
@@ -64,9 +64,13 @@ const KeyWordsSeries = () => {
                 ?
                 <ErrorGetData/>
                 :
-                keyWords.results?.map((keyword)=>(
-                    <Button color="white" className="m-1 p-1">{keyword.name}</Button>
-                ))
+                <div className="flex justify-center flex-wrap md:justify-start">
+                    {
+                        keyWords.results?.map((keyword)=>(
+                            <Button color="white" className="m-1 p-1">{keyword.name}</Button>
+                        ))
+                    }
+                </div>
             }
         </div>
     )
