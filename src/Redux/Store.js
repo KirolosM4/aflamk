@@ -7,6 +7,8 @@ import { seriesDetails } from "./Slices/DetailsSeriesSlice";
 import { ReviewsData } from "./Slices/ReviewsSlice";
 import { mediaRedu } from "./Slices/MediaSlice";
 import { ReviewsDataSeries } from "./Slices/ReviewSeriesSlice";
+import { mediaSeriesRedu } from "./Slices/MediaSeriesSlice";
+import { searchData } from "./Slices/SearchSlice";
 const Store = configureStore({
     reducer : {
         HomeRedu,
@@ -17,6 +19,8 @@ const Store = configureStore({
         ReviewsData,
         mediaRedu,
         ReviewsDataSeries,
+        mediaSeriesRedu,
+        searchData,
     }
 })
 

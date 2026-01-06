@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import { getCreditsSeries, getDetailsSeries } from "../Redux/Slices/DetailsSeriesSlice";
@@ -7,7 +7,10 @@ import { CiStar } from "react-icons/ci";
 import { FaYoutube } from "react-icons/fa";
 import {Button} from "@material-tailwind/react"
 import ErrorGetData from "../component/ErrorGetData"
+import {getVideosSeries} from "../Redux/Slices/MediaSeriesSlice"
 const SeriesDetails = () => {
+    const [viewTrailer,setViewTrailer] = useState(false);
+    const {videosSeries,loadingVideo,errVideo} = useSelector(reducer=>reducer.mediaSeriesRedu);
     const navigate = useNavigate();
     const {seriesId} = useParams();
     const {detailsSeries:{poster_path,backdrop_path,name,air_date,original_language,genres,runtime,overview},creditSeries,loadingSeriesDetails,errSeriesDetails,loadingCredit,errCredit} = useSelector(reducer=>reducer.seriesDetails)
@@ -16,6 +19,20 @@ const SeriesDetails = () => {
         dispatch(getDetailsSeries(seriesId));
         dispatch(getCreditsSeries(seriesId));
     },[seriesId])
+    
+    const GetTrailerSeries = () => {
+        return(
+            loadingVideo
+            ?
+            <div className="fixed top-0 h-full bg-black w-full flex justify-center items-center z-50">
+                <div className="loader"></div>
+            </div>
+            :
+            <div className="fixed top-0 h-full bg-black w-full flex justify-center z-50 bg-opacity-50" onClick={()=>setViewTrailer(false)}>
+                <iframe className="absolute w-[80%] h-1/3 border-8 border-[#212529] viewTrailerAnim md:h-[50vh] md:w-1/2 lg:w-1/3 lg:h-[40vh]" src={`https://www.youtube.com/embed/${videosSeries[0]?.key}?si=OtXxU9-V7xYVjVni`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        )
+    }
 
     return(
        ( loadingSeriesDetails || loadingCredit)
@@ -30,22 +47,29 @@ const SeriesDetails = () => {
             <ErrorGetData/>
         </div>
         :
-        <div className="relative bg-no-repeat bg-cover bg-center before:opacity-25 before:content-[''] before:absolute before:top-0 before:h-full before:w-full before:bg-gradient-to-b before:from-black before:via-transparent before:to-black" style={{backgroundImage:`url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${backdrop_path})`}}>
-            <p className="text-2xl p-3 text-[#0DCAF0] font-bold text-center md:text-3xl">Series-Details</p>
-            <div className="flex flex-col gap-5 text-white md:flex-row">
-                <div className="flex justify-center md:justify-end">
-                    <img className="w-[70%] h-[90%]" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${poster_path}`} alt="" />
+        <div className={`relative bg-no-repeat bg-cover bg-center before:opacity-100 before:content-[''] before:absolute before:top-0 before:h-full before:w-full before:bg-gradient-to-b before:from-black before:via-transparent before:to-black z-20`} style={{backgroundImage:`url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${backdrop_path})`}}>
+            {viewTrailer && <GetTrailerSeries/>}
+            <p className="relative text-2xl p-3 text-[#0DCAF0] font-bold text-center md:text-3xl">Series-Details</p>
+            <div className="flex flex-col gap-5 text-white lg:flex-row relative">
+                <div className="flex justify-center lg:justify-end">
+                    {
+                        poster_path == null
+                        ?
+                        <img className="w-[70%] sm:w-[50%] md:w-[30%] lg:w-[70%] h-[90%]" src="https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg" alt="" />    
+                        :
+                        <img className="w-[70%] sm:w-[50%] md:w-[30%] lg:w-[70%] h-[90%]" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${poster_path}`} alt="" />
+                    }
                 </div>
-                <div className="w-full p-3 flex flex-col md:w-[70%]">
-                    <p className="text-2xl font-bold md:text-3xl py-2">{name}</p>
+                <div className="w-full p-3 flex flex-col lg:w-[70%] text-center md:text-left">
+                    <p className="text-2xl font-bold py-2 md:text-3xl">{name}</p>
                     <p className="py-3">{air_date} <span className="capitalize">({original_language})</span> 👉 {genres?.map(({name},index)=>(<span key={index}> {name}, </span>))} 👈</p>
-                    <p className="leading-9"><span className="text-2xl text-[#0DCAF0] font-bold text-center md:text-3xl">OverFlow : </span> <span>{overview}</span></p>
-                    <p className="text-2xl text-[#0DCAF0] py-5 font-bold text-center md:text-left md:text-3xl">Casting </p>
+                    <p className="leading-9"><span className="text-2xl text-[#0DCAF0] font-bold md:text-3xl">OverFlow : </span> <span>{overview}</span></p>
+                    <p className="text-2xl text-[#0DCAF0] py-5 font-bold text-center lg:text-left md:text-3xl">Casting </p>
                     <div className="flex flex-col justify-around py-3 text-center md:flex-row">
                         {
                             creditSeries?.cast?.slice(0,2)?.map(({name,known_for_department},index)=>(
                                 <>
-                                    <p className="flex flex-col"><span className="text-2xl">{name || ""}</span><span className="text-yellow-500">{known_for_department || ""}</span></p>
+                                    {name != undefined ? <p className="flex flex-col"><span className="text-2xl">{name || ""}</span><span className="text-yellow-500">{known_for_department || ""}</span></p> : <span>Acting</span>}
                                     {index > 0 ? "" : <span>||</span>}
                                 </>
                             ))
@@ -64,7 +88,7 @@ const SeriesDetails = () => {
                     <div className="flex flex-wrap justify-between items-center py-3 md:justify-around">
                         <p className="flex flex-col gap-3 text-center"><HiDocumentAdd color="green" className="text-2xl self-center relative"/><span className="text-white">AddTo WatchList</span></p>
                         <p className="flex flex-col gap-3 text-center"><CiStar color="yellow" className="text-2xl self-center relative"/><span className="text-white">Rate Movie</span></p>
-                        <p className="flex flex-col gap-3 text-center"><FaYoutube color="red" className="text-2xl self-center relative" /><span className="text-white">Play Trailer</span></p>
+                        <p className="flex flex-col gap-3 text-center" onClick={()=>{dispatch(getVideosSeries(seriesId));setViewTrailer(true);}}><FaYoutube color="red" className="text-2xl self-center relative" /><span className="text-white">Play Trailer</span></p>
                     </div>
                     <Button className="py-3 px-4 w-fit text-[#0DCAF0] bg-transparent self-center relative hover:bg-[#0DCAF0] hover:text-[#212529] border-[#0DCAF0]" variant="outlined" color="white" onClick={()=>navigate(-1)}>Back a step</Button>
                 </div>

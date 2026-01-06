@@ -1,11 +1,14 @@
-import React from "react";
+import React ,{useState} from "react";
 import SeriesDetails from "./componentDetailsSeries/seriesDetails";
 import BilledCastSeries from "./componentDetailsSeries/BilledCastSeries";
 import RecommendationSeries from "./componentDetailsSeries/RecommendationSeries";
 import SocialSeries from "./componentDetailsSeries/SocialSeries";
 import KeyWordsSeries from "./componentDetailsSeries/KeyWordsSeries";
 import LastSeason from "./componentDetailsSeries/lastSeason";
+import MediaSeries from "./componentDetailsSeries/MediaSeries";
+
 const DetailsSeries = () => {
+    
     return(
         <div className="bg-black">
             <SeriesDetails/>
@@ -14,7 +17,7 @@ const DetailsSeries = () => {
                     <BilledCastSeries/>
                     <LastSeason/>
                     <SocialSeries/>
-                    {/* <Media/> */}
+                    <MediaSeries/>
                     <RecommendationSeries/>
                 </div>
                 <KeyWordsSeries/>

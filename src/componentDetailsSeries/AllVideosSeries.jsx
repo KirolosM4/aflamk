@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import HeaderMedia from "./HeaderMedia";
+import HeaderMediaSeries from "./HeaderMediaSeries";
 import { useDispatch, useSelector } from "react-redux";
-import { getVideos } from "../Redux/Slices/MediaSlice";
 import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
+import { getVideosSeries } from "../Redux/Slices/MediaSeriesSlice";
 import ErrorGetData from "../component/ErrorGetData";
-const AllVideos = () => {
-    const {movieId} = useParams();
-    const {videos,loadingVideo,errVideo} = useSelector(reducer=>reducer.mediaRedu);
+const AllVideosSeries = () => {
+    const {seriesId} = useParams();
+    const {videosSeries,loadingVideo,errVideo} = useSelector(reducer=>reducer.mediaSeriesRedu);
     const [allVideos,setAllVideos] = useState({});
     const [viewVideo,setViewVideo] = useState([]);
     const [countslide,setCountSlide] = useState(0);
@@ -23,12 +23,12 @@ const AllVideos = () => {
     }
 
     useEffect(() => {
-        dispatch(getVideos(movieId));
-    }, [movieId]);
+        dispatch(getVideosSeries(seriesId));
+    }, [seriesId]);
 
     useEffect(() => {
-        if (videos && videos.length > 0) {
-            const newVideos = videos.reduce((acc, video) => {
+        if (videosSeries && videosSeries.length > 0) {
+            const newVideos = videosSeries.reduce((acc, video) => {
                 const typeV = video.type;
                 if (!acc[typeV]) acc[typeV] = [];
                 acc[typeV].push(video.key);
@@ -36,7 +36,7 @@ const AllVideos = () => {
             }, {});
             setAllVideos(newVideos);
         }
-    }, [videos]);
+    }, [videosSeries]);
     
     useEffect(() => {
     const entries = Object.entries(allVideos);
@@ -50,15 +50,15 @@ const AllVideos = () => {
     },[])
     return(
         <div className="bg-black">
-            <HeaderMedia/>
+            <HeaderMediaSeries/>
             {
                 loadingVideo
                 ?
                 <div className="flex py-5 justify-center h-screen items-center">
                     <div className="loader"></div>
-                </div> 
-                : 
-                errVideo 
+                </div>                
+                :
+                errVideo
                 ?
                 <ErrorGetData/>
                 :
@@ -92,4 +92,4 @@ const AllVideos = () => {
     )
 }
 
-export default AllVideos
+export default AllVideosSeries;

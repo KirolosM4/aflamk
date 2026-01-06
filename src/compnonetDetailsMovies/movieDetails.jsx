@@ -7,8 +7,7 @@ import { CiStar } from "react-icons/ci";
 import { FaYoutube } from "react-icons/fa";
 import {Button} from "@material-tailwind/react"
 import ErrorGetData from "../component/ErrorGetData"
-import { getMedia, getVideos } from "../Redux/Slices/MediaSlice";
-import { getReviews } from "../Redux/Slices/ReviewsSlice";
+import {getVideos } from "../Redux/Slices/MediaSlice";
 const MovieDetails = () => {
     const [viewTrailer,setViewTrailer] = useState(false);
     const {videos,loadingVideo,errVideo} = useSelector(reducer=>reducer.mediaRedu);
@@ -34,7 +33,6 @@ const MovieDetails = () => {
             </div>
         )
     }
-
     return(
        ( loadingMovieDetails || loadingCredit)
         ?
@@ -53,7 +51,13 @@ const MovieDetails = () => {
             <p className="relative text-2xl p-3 text-[#0DCAF0] font-bold text-center md:text-3xl">Movie-Details</p>
             <div className="flex flex-col gap-5 text-white lg:flex-row relative">
                 <div className="flex justify-center lg:justify-end">
-                    <img className="w-[70%] sm:w-[50%] md:w-[30%] lg:w-[70%] h-[90%]" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${poster_path}`} alt="" />
+                    {
+                        poster_path == null
+                        ?
+                        <img className="w-[70%] sm:w-[50%] md:w-[30%] lg:w-[70%] h-[90%]" src="https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg" alt="" />    
+                        :
+                        <img className="w-[70%] sm:w-[50%] md:w-[30%] lg:w-[70%] h-[90%]" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${poster_path}`} alt="" />
+                    }
                 </div>
                 <div className="w-full p-3 flex flex-col lg:w-[70%] text-center md:text-left">
                     <p className="text-2xl font-bold py-2 md:text-3xl">{title}</p>
