@@ -21,6 +21,7 @@ import AllBackDropsSeries from "./componentDetailsSeries/AllBackDropsSeries";
 import AllPostersSeries from "./componentDetailsSeries/AllPostersSeries";
 import SearchMovies from "./compnonetDetailsMovies/SearchMovies";
 import SearchSeries from "./componentDetailsSeries/SearchSeries";
+import Persons from "./Persons";
 const App = () => {
   return(
     <>
@@ -45,7 +46,7 @@ const App = () => {
         <Route path="/series/:seriesId/title/:seriesTitle/backdrops" element={<AllBackDropsSeries/>}/>
         <Route path="/series/:seriesId/title/:seriesTitle/posters" element={<AllPostersSeries/>}/>
         <Route path="/search/:wordSearch/in/series" element={<SearchSeries/>}/>
-
+        <Route path="/person/:personId/hisname/:personName" element={<Persons/>}/>
       </Routes>
       <Footer/>
     </>

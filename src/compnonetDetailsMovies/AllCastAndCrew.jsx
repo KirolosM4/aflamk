@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {useParams } from "react-router-dom";
+import {useNavigate, useParams } from "react-router-dom";
 import ErrorGetData from "../component/ErrorGetData"
 import { getCreditsMovie, getDetilsMovie } from "../Redux/Slices/DetailsMovieSlice";
 import {
@@ -14,7 +14,7 @@ const AllCastAndCrew = () => {
     const {movieId} = useParams();
     const {creditMovie:{cast,crew},loadingCredit,errCredit} = useSelector(reducer=>reducer.movieDetails)
     const [groups,setGroups] = useState({});
-
+    const navigate = useNavigate();
     useEffect(()=>{
         if(crew){
             const groups = crew.reduce((acc,person)=>{
@@ -49,7 +49,7 @@ const AllCastAndCrew = () => {
                     <p className="text-2xl py-3 font-bold text-center text-white md:text-left md:text-3xl ">Cast <span className="text-[#0DCAF0]">{cast?.length}</span></p>
                     {
                         cast?.map(({id,profile_path,name,character})=>(
-                            <Card key={id} className="bg-[#212529] flex flex-col items-center m-7 rounded-none md:flex-row md:mx-0">
+                            <Card key={id} className="bg-[#212529] flex flex-col items-center m-7 rounded-none md:flex-row md:mx-0 cursor-pointer" onClick={()=>navigate(`/person/${id}/hisname/${name}`)}>
                                 <CardHeader className="m-0 rounded-none shadow-none w-[50vw] md:w-[25vw] lg:w-[15vw] bg-gray">
                                     <img
                                     src={profile_path ? `https://image.tmdb.org/t/p/w600_and_h900_bestv2/${profile_path}` : "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg"}

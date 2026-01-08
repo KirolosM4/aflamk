@@ -30,7 +30,7 @@ const BilledCast = () => {
                                     index < 10
                                     ?
                                     <>
-                                        <CardHeader className="m-0 rounded-none shadow-none w-[50vw] md:w-[25vw] lg:w-[15vw] bg-gray">
+                                        <CardHeader className="m-0 rounded-none shadow-none w-[50vw] md:w-[25vw] lg:w-[15vw] bg-gray cursor-pointer"  onClick={()=>navigate(`/person/${id}/hisname/${name}`)}>
                                             <img
                                             src={profile_path ? `https://image.tmdb.org/t/p/w600_and_h900_bestv2/${profile_path}` : "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg"}
                                             alt="card-image"

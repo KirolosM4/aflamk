@@ -22,15 +22,15 @@ const BilledCastSeries = () => {
                 ?
                 <ErrorGetData/>
                 :
-                <div className={`${(creditSeries?.cast?.length > 5 || window.innerWidth < 600) && "overflow-x-scroll"} flex flex gap-5`}>
+                <div className={`${(creditSeries?.cast?.length > 3 || window.innerWidth < 600) && "overflow-x-scroll"} flex flex gap-5`}>
                     {
                         creditSeries?.cast?.slice(0,11).map(({id,name,character,profile_path},index)=>(
-                            <Card key={id} className="bg-[#212529] flex flex-col justify-between">
+                            <Card key={id} className="bg-[#212529] flex flex-col justify-between cursor-pointer">
                                 {
                                     index < 10
                                     ?
                                     <>
-                                        <CardHeader className="m-0 rounded-none shadow-none w-[50vw] md:w-[25vw] lg:w-[15vw] bg-gray">
+                                        <CardHeader className="m-0 rounded-none shadow-none w-[50vw] md:w-[25vw] lg:w-[15vw] bg-gray" onClick={()=>navigate(`/person/${id}/hisname/${name}`)}>
                                             <img
                                             src={profile_path ? `https://image.tmdb.org/t/p/w600_and_h900_bestv2/${profile_path}` : "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg"}
                                             alt="card-image"
