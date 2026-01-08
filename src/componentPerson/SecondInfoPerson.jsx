@@ -48,10 +48,10 @@ const SecondInfoPerson = () => {
             <p className="text-2xl font-bold md:text-3xl">{name}</p>
             <p className="flex flex-col py-7"><span className="text-[#0DCAF0] text-xl font-bold">Biography</span><span>{biography || `We don't have a biography for ${name}`}</span></p>
             <p className="py-7 text-[#0DCAF0] text-xl font-bold">Known For</p>
-            <div className="flex flex-wrap gap-3 w-full">
+            <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
                 {
                     knownFor.slice(0,3).map(({id,poster_path,title,original_name,media_type})=>(
-                        <Card key={id} className="mt-6 bg-[#212529] w-[25%] cursor-pointer" onClick={()=>media_type == "movie" ? navigate(`/movie/${id}/title/${title}`) : navigate(`/series/${id}/title/${original_name}`)}>
+                        <Card key={id} className="mt-6 bg-[#212529] w-[60%] sm:w-[25%] cursor-pointer" onClick={()=>media_type == "movie" ? navigate(`/movie/${id}/title/${title}`) : navigate(`/series/${id}/title/${original_name}`)}>
                             <CardHeader className="m-0 h-[75%] md:h-[70%] rounded-none shadow-none">
                                 {
                                     poster_path == null
