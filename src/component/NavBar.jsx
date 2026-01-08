@@ -113,10 +113,17 @@ const MainNav =  () => {
                 as="a"
                 href="#"
                 variant="h6"
-                className="mr-4 cursor-pointer py-1.5"
+                className="
+                    mr-4 cursor-pointer py-1.5 font-bold
+                    bg-gradient-to-r from-white via-gray-600 to-white
+                    bg-[length:300%_300%]
+                    bg-clip-text text-transparent
+                    animate-gradientMove
+                "
                 >
-                    AFLAMK
+                    Kirolos Magdy
                 </Typography>
+
                 <div className="hidden lg:block grow">
                     <NavList navigate={navigate} dispatch={dispatch} word={word} setWord={setWord} SearchList={SearchList} setTypeSearch={setTypeSearch} typeSearch={typeSearch}/>
                 </div>
