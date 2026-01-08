@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MainNav from "./component/NavBar";
 import Home from "./Home";
 import Footer from "./component/Footeer"
@@ -23,6 +23,10 @@ import SearchMovies from "./compnonetDetailsMovies/SearchMovies";
 import SearchSeries from "./componentDetailsSeries/SearchSeries";
 import Persons from "./Persons";
 const App = () => {
+  useEffect(() => {
+  fetch("/api/track");
+}, []);
+
   return(
     <>
       <MainNav/>
