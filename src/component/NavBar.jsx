@@ -121,7 +121,7 @@ const MainNav =  () => {
                     animate-gradientMove
                 "
                 >
-                    Kirolos Magdy
+                    Madonna Magdy
                 </Typography>
 
                 <div className="hidden lg:block grow">
